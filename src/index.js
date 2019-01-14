@@ -359,53 +359,128 @@ import './index.css';
 //===============================
 //Split Component
 //================================
-function formatDate(date){
-    return date.toLocaleDateString();
-}
-const comment = {
-    date: new Date(),
-    text: "She is a good mentor",
-    author: {
-        name: "Bavelly",
-        avatarUrl:'https://placekitten.com/g/64/64',
+// function formatDate(date){
+//     return date.toLocaleDateString();
+// }
+// const comment = {
+//     date: new Date(),
+//     text: "She is a good mentor",
+//     author: {
+//         name: "Bavelly",
+//         avatarUrl:'https://placekitten.com/g/64/64',
+//     }
+// }
+// function Avatar(props){
+//     return(
+//         <img 
+//             className="Avatar" 
+//             height="200px" 
+//             src={props.user.avatarUrl} 
+//             alt={props.user.name}
+//         />
+//     );
+// }
+// function Name(props){
+//     return(
+//         <div className="UserInfo-name">
+//         {props.user.name}
+//         </div>
+//     );
+// }
+// function UserInfo(props){
+//     return(
+//         <div className="UserInfo">
+//             <Avatar user={props.user} />
+//             <Name user={props.user} />
+//         </div>
+//     );
+// }
+// function Text(props){
+//     return(
+//         <div className="Comment-text">
+//             {props.text}
+//         </div>
+//     );
+// }
+// function Comment(props){
+//     return(
+//         <div className="Comment">
+//             <div className="UserInfo">
+//                 <UserInfo user={props.author}/>
+//                 <Text text={props.text}/>
+//                 <div className="Comment-date">
+//                     {formatDate(props.date)}
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// }
+// ReactDOM.render(<Comment date={comment.date} text={comment.text} author={comment.author} />,document.getElementById('root'));
+//==============================================================
+//Clock reusable
+//==============================================================
+// function Clock(props){
+//     return(
+//         <div>
+//             <h1>Good night</h1>
+//             <h2>It is {props.date.toLocaleTimeString()}</h2>
+//         </div>
+//     );
+// }
+// function tick(){
+//     ReactDOM.render(
+//         <Clock date={new Date()} />,
+//         document.getElementById('root')
+//     );
+// }
+// setInterval(tick,1000);
+//======================
+//Clock with Class Clock
+//===========================================
+// class Clock extends React.Component{
+//     render(){
+//         return(
+//             <div>
+//                 <h1>Hello</h1>
+//                 <h2>It is {this.props.date.toLocaleTimeString()}</h2>
+//             </div>
+//         );
+//     }
+// }
+// function tick(){
+//     ReactDOM.render(<Clock date={new Date()}/>,document.getElementById('root'));
+// }
+// setInterval(tick,1000);
+//===================================
+//Clock with Sate
+//=======================================
+class Clock extends React.Component{
+    constructor(props){
+        super(props);
+        this.state ={
+            date: new Date()
+        };
+    }
+    componentDidMount(){
+        this.timerID = setInterval(
+            () => this.tick(), 1000
+        );
+    }
+    componentWillUnmount(){
+        clearInterval(this.timerID);
+    }
+    tick(){
+        this.setState({
+            date: new Date()
+        });
+    }
+    render(){
+        return(
+            <div>
+                <h1>Hello</h1>
+                <h2>It is {this.state.date.toLocaleTimeString()}</h2>
+            </div>
+        );
     }
 }
-function Avatar(props){
-    return(
-        <img 
-            className="Avatar" 
-            height="200px" 
-            src={props.user.avatarUrl} 
-            alt={props.user.name}
-        />
-    );
-}
-function Name(props){
-    return(
-        <div className="UserInfo-name">
-        {props.user.name}
-        </div>
-    );
-}
-function Text(props){
-    return(
-    <div className="Comment-text">
-        {props.text}
-    </div> 
-    );
-}
-function Comment(props){
-    return(
-        <div className="Comment">
-            <div className="UserInfo">
-                <Avatar user={props.author}/>
-                <Name user={props.author}/>
-                <Text text={props.text}/>
-                <div className="Comment-date">
-                    {formatDate(props.date)}
-                </div>
-            </div>
-        </div>
-    );
-}
-ReactDOM.render(<Comment date={comment.date} text={comment.text} author={comment.author} />,document.getElementById('root'));
+ReactDOM.render(<Clock/>,document.getElementById('root'));
