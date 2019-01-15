@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
@@ -454,34 +454,249 @@ import './index.css';
 //===================================
 //Clock with Sate
 //=======================================
-class Clock extends React.Component{
+// class Clock extends React.Component{
+//     constructor(props){
+//         super(props);
+//         this.state = {
+//             date: new Date()
+//         };
+//     }
+//     componentDidMount(){
+//         this.timerID = setInterval(
+//             () => this.tick(), 1000
+//         );
+//     }
+//     componentWillUnmount(){
+//         clearInterval(this.timerID);
+//     }
+//     tick(){
+//         this.setState({
+//             date: new Date()
+//         });
+//     }
+
+//     render(){
+//         return(
+//             <div>
+//                 <h1>Hello</h1>
+//                 <h2>It is <FormattedDate date={this.state.date}/></h2>
+//             </div>
+//         );
+//     }
+// }
+// function FormattedDate(props){
+//     return(<h2>It is {props.date.toLocaleTimeString()}</h2>);
+// }
+// function App(){
+//     return(
+//         <div>
+//             <Clock/>
+//             <Clock/>
+//             <Clock/>
+//         </div>
+//     );
+
+// }
+// ReactDOM.render(<App/>,document.getElementById('root'));
+//NOTICE: State only is accessible to any component that owns it
+
+
+//==========================================
+//Update Multiole State
+//==============================================
+// class Status extends React.Component {
+//     constructor(props){
+//         super(props);
+//         this.state = {
+//             posts: [],
+//             comments: [],
+//         };
+//     }
+//     componentDidMount(){
+//         fetPosts().then(response => {
+//             this.setState({
+//                 posts: response.posts
+//             });
+//         });
+//         fetchComments().then(response => {
+//             this.setState({
+//                 comments: response.comments
+//             });
+//         });
+//     }
+//     render(){
+//         return(
+//             <div>
+//                 <h1>Hello</h1>
+//                 <h2>It is {this.state.post}</h2>
+//             </div>
+//         );
+//     }
+// }
+// ReactDOM.render(<Status/>,document.getElementById('root'));
+
+//=================================
+//Handle Click
+//===============================
+// class ActionLink extends React.Component{
+//     constructor(props){
+//         super(props);
+//     }
+//     handleClick(e){
+//         e.preventDefault();
+//         console.log('The link was clicked.');
+//     }
+//     render(){
+//         return(
+//             <a href="#" onClick={handleClick}>Click</a>
+//         );
+//     }
+// }
+// ReactDOM.render( <ActionLink/>, document.getElementById('root'));
+//=======================================
+//Zero Method: Toggle Button using bind
+//========================================
+// class Toggle extends React.Component {
+//     constructor(props){
+//         super(props);
+//         this.state = {
+//             isToggleOn: true,
+//         };
+//         this.handleClick = this.handleClick.bind(this);
+//     }
+//     handleClick(){
+//         this.setState(state => ({isToggleOn: !state.isToggleOn}));
+//     }
+//     render(){
+//         return(
+//             <button onClick={this.handleClick}>
+//                 {this.state.isToggleOn ? 'ON' : 'OFF'}
+//             </button>
+//         );
+//     }
+// }
+// ReactDOM.render(<Toggle/>, document.getElementById('root'));
+//==================================
+//FIRST METHOD: Using public class fields syntax for Handleing Event
+//===================================================
+// class LoggingButton extends React.Component{
+//     constructor(props){
+//         super(props);
+//         this.state = {
+//             isOn: true,
+//         };
+//     }
+//     handleClick =  () => {
+//         this.setState(state => ({isOn: !state.isOn}));
+//         //console.log('this is', this);
+//     }
+//     render(){
+//         return(
+//             <button onClick={ this.handleClick}>
+//                 {this.state.isOn ? 'YES' : 'No'}
+//             </button>
+//         );
+//     }
+// }
+// ReactDOM.render(<LoggingButton/>,document.getElementById('root'));
+//==========================================================
+//SECOND METHOD: Using Arrow function for handling Event
+//==========================================================
+// class LoggingButton extends React.Component{
+//     constructor(props){
+//         super(props);
+//         this.state = {
+//             isButtonOn: true,
+//         };
+//     }
+//     handleClick(){
+//         this.setState(state=>({
+//             isButtonOn: !state.isButtonOn,
+//         })); 
+//         //console.log('This is: ',this);
+//     }
+//     render(){
+//         return(
+//             <button onClick={(e)=>this.handleClick(e)}> 
+//                 {this.state.isButtonOn ? 'Click if you want' : 'Click if you like'} 
+//             </button>
+//         );
+//     }
+// }
+// ReactDOM.render(<LoggingButton />,document.getElementById('root'));
+//======================================================
+//Conditional REndering
+//=============================================================
+// function UserGreeting(props){
+//     return(<h1>Welcome back</h1>);
+// }
+// function GuestGreeting(props){
+//     return(<h1>Please sign up</h1>);
+// }
+// function Greeting(props){
+//     const isLoggedIn = props. isLoggedIn;
+//     if(isLoggedIn){
+//         return <UserGreeting/>;
+//     }
+//     return <GuestGreeting/>;
+// }
+// ReactDOM.render(<Greeting isLoggedIn={true}/>,document.getElementById('root'));
+//====================================================================
+//
+//====================================================================
+function LoginButton(props){
+    return(
+        <button onClick={props.onClick}>Login</button>
+    );
+}
+function LogoutButton(props){
+    return(
+        <button onClick={props.onClick}>Logout</button>
+    );
+}
+function Greeting(props){
+    const isLoggedIn = props.isLoggedIn;
+    if(isLoggedIn){
+        return <UserGreeting/>;
+    }
+    return <GuestGreeting/>;
+}
+function UserGreeting(props){
+    return(<h1>Welcome back</h1>);
+}
+function GuestGreeting(props){
+    return(<h1>Please sign up</h1>);
+}
+class LoginControl extends React.Component {
     constructor(props){
         super(props);
+        this.handleLoginClick = this.handleLoginClick.bind(this);
+        this.handleLogoutClick = this.handleLogoutClick.bind(this);
         this.state = {
-            date: new Date()
+            isLoggedIn: false, 
         };
     }
-    componentDidMount(){
-        this.timerID = setInterval(
-            () => this.tick(), 1000
-        );
+    handleLoginClick(){
+        this.setState({isLoggedIn: true});
     }
-    componentWillUnmount(){
-        clearInterval(this.timerID);
-    }
-    tick(){
-        this.setState({
-            date: new Date()
-        });
+    handleLogoutClick(){
+        this.setState({isLoggedIn:false});
     }
     render(){
+        const isLoggedIn = this.state.isLoggedIn;
+        let button;
+        if(isLoggedIn){
+            button = <LogoutButton onClick = {this.handleLogoutClick}/>
+        }
+        else{
+            button= <LoginButton onClick= {this.handleLoginClick}/>
+        }
         return(
             <div>
-                <h1>Hello</h1>
-                <h2>It is {this.state.date.toLocaleTimeString()}</h2>
+                <Greeting isLoggedIn={isLoggedIn}/>
+                {button}
             </div>
         );
     }
 }
-ReactDOM.render(<Clock/>,document.getElementById('root'));
-//NOTICE: State only is accessible to any component that owns it
+ReactDOM.render(<LoginControl />,document.getElementById('root'));
