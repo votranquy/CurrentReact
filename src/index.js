@@ -808,47 +808,61 @@ import './index.css';
 // }
 // function NumberList(props){
 //     const numbers = props.numbers;
-//     const listItems = numbers.map( (number) =>
-//         // <li key={number.toString()}>{number}</li>
-//         <ListItems key={number.toString()} value={number} />
-//     );
+    //======
+    //Method 1
+    // const listItems = numbers.map( (number) =>
+    //     // <li key={number.toString()}>{number}</li>
+    //     <ListItems key={number.toString()} value={number} />
+    // );
+    // return(
+    //     <ul>
+    //         {listItems}
+    //     </ul>
+    // );
+    //========
+    //Method 2
 //     return(
 //         <ul>
-//             {listItems}
+//             {numbers.map((number)=>
+//                 <ListItems key={number.toString()} value={number}/>    
+//             )}
 //         </ul>
 //     );
+//     //=============
+
 // }
-// const numbers = [1,2,3,4,5,6];
+// const numbers = [1,2,3,4,5,6,8];
 // ReactDOM.render(<NumberList numbers={numbers}/>,document.getElementById('root'));
 
 //=======================================================
 //
 //=========================================
-function Blog(props){
-    const sidebar = props.posts.map(
-            (post)=>
-            <li key={post.id} >{post.title}</li>  
-    );
-    const content = props.posts.map( 
-        (post)=>
-        <div key={post.id}>
-            <h3>{post.id}</h3>
-            <p>{post.content}</p>
-        </div>
-    );
-    return(
-        <div>
-            <ul>
-                {sidebar}
-            </ul>
-            <br></br>
-            {content}
-        </div>
-    );
-}
-const posts =[
-    {id:1,title:'First',content:'The content of First'},
-    {id:2,title:'Second',content:'The content of Second'},
-    {id:3,title:'Third',content:'The content of Third'}
-];
-ReactDOM.render(<Blog posts={posts}/>,document.getElementById('root'));
+// function Blog(props){
+//     const sidebar = props.posts.map(
+//             (post)=>
+//             <li key={post.id} >{post.title}</li>  
+//     );
+//     const content = props.posts.map( 
+//         (post)=>
+//         <div key={post.id}>
+//             <h3>{post.id}</h3>
+//             <h4>{post.title}</h4>
+//             <p>{post.content}</p>
+//         </div>
+//     );
+//     return(
+//         <div>
+//             <ul>
+//                 {sidebar}
+//             </ul>
+//             <br></br>
+//             {content}
+//         </div>
+//     );
+// }
+// const posts =[
+//     {id:1,title:'First',content:'The content of First'},
+//     {id:2,title:'Second',content:'The content of Second'},
+//     {id:3,title:'Third',content:'The content of Third'}
+// ];
+// ReactDOM.render(<Blog posts={posts}/>,document.getElementById('root'));
