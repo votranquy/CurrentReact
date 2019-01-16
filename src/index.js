@@ -706,19 +706,149 @@ import './index.css';
 //======================================================================
 //
 //======================================================================
-function Mailbox(props){
-    const unreadMessages = props.unreadMessages;
+// function Mailbox(props){
+//     const unreadMessages = props.unreadMessages;
+//     return(
+//         <div>
+//             <h4>Good night</h4>
+//             {unreadMessages.length > 0 &&
+//               <h2>
+//                   You have {unreadMessages.length} unread messages.
+//               </h2>   
+//             }
+//         </div>
+//     );
+// }
+// const messages = ['React','React: React', 'Re:Re:React'];
+// ReactDOM.render(<Mailbox unreadMessages={messages}/>,document.getElementById('root'));
+//https://reactjs.org/docs/conditional-rendering.html
+//==========================================================
+//
+//==========================================================
+// function WarningBanner(props){
+//     if(!props.warn){
+//         return null;
+//     }
+//     return(
+//         <div className="warning">
+//             Warning!
+//         </div>
+//     );
+// }    
+// class Page extends React.Component{
+//     constructor(props){
+//         super(props);
+//         this.state = {
+//             showWarning: true,
+//         };
+//         this.handleToggleClick = this.handleToggleClick.bind(this);
+//     }
+//     handleToggleClick(){
+//         this.setState( state => ({showWarning: !state.showWarning}) );
+//     }
+//     render(){
+//         return(
+//             <div>
+//                 <WarningBanner warn = {this.state.showWarning}/>
+//                 <button onClick = {this.handleToggleClick}>
+//                     {this.state.showWarning ? 'Hide' : 'Show'}
+//                 </button>
+//             </div>
+//         );
+//     }
+// }
+// ReactDOM.render(<Page />,document.getElementById('root'));
+//==================================================
+//List and key
+//=====================================================
+// const numbers = [1,2,3,4,5];
+// const listItems = numbers.map( (number)=><li>{number*2}</li>  );
+
+// ReactDOM.render(
+//     <ul>{listItems}</ul>,
+//     document.getElementById('root')
+// );
+//===========================================
+//Build by Class
+//=========================================
+// function NumberList(props){
+//     const numbers=props.numbers;
+//     const listItems = numbers.map( 
+//         (number) =>
+//         <li key={number.toString()}>
+//             {number}
+//         </li>);
+//     return(
+//         <ul>{listItems}</ul>
+//     );
+// }
+// const numbers = [1,2,3,4,5];
+// ReactDOM.render(<NumberList numbers={numbers}/>, document.getElementById('root'));
+
+//===========================================
+//Key for list
+//==============================================
+// function TodoList(props){
+//     const todos=props.todos;
+//     const todoItems = todos.map((todo) =>
+//         <li key={todo}>{todo}</li>
+//     );
+//     return(
+//         <ul>{todoItems}</ul>
+//     );
+// }
+// const todos = ['Do home work','Go shopping','Meet friends'];
+// ReactDOM.render(<TodoList todos={todos}/>, document.getElementById('root'));
+
+//===============================
+//
+//======================================
+// function ListItems(props){
+//     return <li>{props.value}</li>;
+// }
+// function NumberList(props){
+//     const numbers = props.numbers;
+//     const listItems = numbers.map( (number) =>
+//         // <li key={number.toString()}>{number}</li>
+//         <ListItems key={number.toString()} value={number} />
+//     );
+//     return(
+//         <ul>
+//             {listItems}
+//         </ul>
+//     );
+// }
+// const numbers = [1,2,3,4,5,6];
+// ReactDOM.render(<NumberList numbers={numbers}/>,document.getElementById('root'));
+
+//=======================================================
+//
+//=========================================
+function Blog(props){
+    const sidebar = props.posts.map(
+            (post)=>
+            <li key={post.id} >{post.title}</li>  
+    );
+    const content = props.posts.map( 
+        (post)=>
+        <div key={post.id}>
+            <h3>{post.id}</h3>
+            <p>{post.content}</p>
+        </div>
+    );
     return(
         <div>
-            <h4>Good night</h4>
-            {unreadMessages.length > 0 &&
-              <h2>
-                  You have {unreadMessages.length} unread messages.
-              </h2>   
-            }
+            <ul>
+                {sidebar}
+            </ul>
+            <br></br>
+            {content}
         </div>
     );
 }
-const messages = ['React','React: React', 'Re:Re:React'];
-ReactDOM.render(<Mailbox unreadMessages={messages}/>,document.getElementById('root'));
-//https://reactjs.org/docs/conditional-rendering.html
+const posts =[
+    {id:1,title:'First',content:'The content of First'},
+    {id:2,title:'Second',content:'The content of Second'},
+    {id:3,title:'Third',content:'The content of Third'}
+];
+ReactDOM.render(<Blog posts={posts}/>,document.getElementById('root'));
