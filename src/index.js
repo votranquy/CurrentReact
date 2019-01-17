@@ -866,3 +866,242 @@ import './index.css';
 //     {id:3,title:'Third',content:'The content of Third'}
 // ];
 // ReactDOM.render(<Blog posts={posts}/>,document.getElementById('root'));
+
+//=====================================
+//Form
+//====================================
+// class NameForm extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {value: ''};
+
+//     this.handleChange = this.handleChange.bind(this);
+//     this.handleSubmit = this.handleSubmit.bind(this);
+//   }
+
+//   handleChange(event) {
+//     this.setState({value: event.target.value.toUpperCase()});
+//   }
+
+//   handleSubmit(event) {
+//     alert('A name was submitted: ' + this.state.value);
+//     event.preventDefault();
+//   }
+
+//   render() {
+//     return (
+//       <form onSubmit={this.handleSubmit}>
+//         <label>
+//           Name:
+//           <input type="text" value={this.state.value} onChange={this.handleChange} />
+//         </label>
+//         <label>
+//           Description:
+//         <textarea value={this.state.value} onChange={this.handleChange} />
+//         </label>
+//         <input type="submit" value="Submit" />
+//       </form>
+//     );
+//   }
+// }
+
+// ReactDOM.render( <NameForm />,document.getElementById('root'));
+//==================================================
+//
+//=======================================================
+// class FlavorForm extends React.Component{
+//     constructor(props){
+//         super(props);
+//         this.state = {value: 'coconut'};
+//         this.handleChange = this.handleChange.bind(this);
+//         this.handleSubmit = this.handleSubmit.bind(this);
+//     }
+//     handleChange(event){
+//         this.setState({value: event.target.value});
+//     }
+//     handleSubmit(event){
+//         alert('Your favorite flavor is:' + this.state.value);
+//         event.preventDefault();
+//     }
+//     render(){
+//         return(
+//             <form onSubmit={this.handleSubmit}>
+//                 <label>
+//                     Pick your favorite flavor:
+//                     <select value={this.state.value} onChange={this.handleChange}>
+//                         <option value="grapefruit">Grapefruit</option>
+//                         <option value="lime">Lime</option>
+//                         <option value="coconut">Coconut</option>
+//                         <option value="mango">Mango</option>
+//                     </select>
+//                 </label>
+//                 <input type="submit" value="Submit" />
+//             </form>
+//         );
+//     }
+// }
+// ReactDOM.render(<FlavorForm/>, document.getElementById('root'));
+
+//=============================================
+//
+//===============================================
+// class Reservation extends React.Component{
+//     constructor(props){
+//         super(props);
+//         this.state = {
+//             isGoing: true,
+//             numberOfGuests: 2,
+//             informationAboutGuest:''
+//         };
+//         this.handleInputChange =this.handleInputChange.bind(this);
+//         this.hanleSubmit = this.hanleSubmit.bind(this);
+//     }
+//     handleInputChange(event){
+//         const target = event.target;
+//         const value = target.type === 'checkbox' ? target.checked : target.value;
+//         const name = target.name;
+//         this.setState({
+//             [name]:value,
+//         });
+//     }
+//     hanleSubmit(event){
+//         alert('Check:' + this.state.isGoing
+//                 +' The number:' +this.state.numberOfGuests
+//                 +' The detail:' +this.state.informationAboutGuest
+//         );
+//         event.preventDefault(); 
+//     }
+//     render(){
+//         return(
+//             <form onSubmit={this.hanleSubmit}>
+//                 <label>
+//                     Is going:
+//                     <input name="isGoing" type="checkbox" checked={this.state.isGoing} onChange={this.handleInputChange} />
+//                 </label>
+//                 <br/>
+//                 <label>
+//                     Number of Guests:
+//                     <input type="number" name="numberOfGuests" value={this.state.numberOfGuests} onChange={this.handleInputChange}/>
+//                 </label>
+//                 <label>
+//                     Detail:
+//                     <input type="text" name="informationAboutGuest" value={this.state.informationAboutGuest} onChange={this.handleInputChange}/>
+//                 </label>
+//                 <input type="submit" value="SUBMIT"/>
+//             </form>
+//         );
+//     }
+// }
+// ReactDOM.render(<Reservation/>, document.getElementById('root'));
+
+//===========================================================
+//Cencius: Water boil or not
+//===========================================================
+// function BoilingVerdict(props){
+//     if(props.celsius >= 100) return <p>The water would boil.</p>
+//     return <p>The water would not boil.</p>
+// }
+// class Calculator extends React.Component{
+//     constructor(props){
+//         super(props);
+//         this.handleChange =this.handleChange.bind(this);
+//         this.state = {temperature: 0};
+//     }
+//     handleChange(event){
+//         this.setState({temperature: event.target.value});
+//     }
+//     render(){
+//         const temperature = this.state.temperature;
+//         return(
+//             <fieldset>
+//                 <legend>Enter temperature in Censius:</legend>
+//                 <input type="number" value={temperature} onChange={this.handleChange} />
+//                 <BoilingVerdict celsius={parseFloat(temperature)} />
+//             </fieldset>
+//         );
+//     }
+// }
+// ReactDOM.render(<Calculator/>, document.getElementById('root'));
+//============================================================
+//UpperCase
+//=============================================================
+// function UpperSentence(props){
+//     return <p>{props.str}</p>;
+// }
+// //The name of function starts with a upper character
+// class Myword extends React.Component{
+//     constructor(props){
+//         super(props);
+//         this.handleChange = this.handleChange.bind(this);
+//         this.state ={sentence:''};
+//     }
+//     handleChange(e){
+//         this.setState({sentence: e.target.value});
+//     }
+//     render(){
+//         const sentence= this.state.sentence;
+//         return(  
+//             <fieldset>
+//                 <legend>Enter some characters:</legend>
+//                 <input type="text" value={sentence} onChange={this.handleChange}/>
+//                 <UpperSentence str={sentence}/>
+//             </fieldset>
+//         );
+//     }
+// }
+// ReactDOM.render(<Myword/>,document.getElementById('root'));
+
+//======================================
+//Template 
+//==================================================================
+const scaleNames ={
+    c: 'Celsius',
+    f: 'Farenheit'
+};
+function toCelsius(fahrenheit){
+    return(fahrenheit -32)*5/9;
+}
+function toFahrenheit(celsius){
+    return (celsius*9/5)+32;
+}
+function tryConvert(temperature,convert){
+    const input = parseFloat(temperature);
+    if(Number.isNaN(input)){return '';}
+    const output = convert(input);
+    const rounded = Math.round(output*1000)/1000;
+    return round.toString();
+}
+class TemperatureInput extends React.Component{
+    constructor(props){
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.state = {temperature:''};
+    }
+    handleChange(e){
+        //this.setState({temperature: e.target.value});
+        this.props.onTemperatureChange(e.target.value);
+    }
+    render(){
+        const temperature = this.props.temperature;
+        const scale = this.props.scale;
+        return(
+            <fieldset>
+                <legend>Enter temperature in {scaleNames[scale]}:</legend>
+                <input value={temperature} onChange={this.handleChange}/>
+            </fieldset>
+        );
+    }
+}
+class Calculator extends React.Component{
+    render(){
+        return(        
+            <div>
+                <TemperatureInput scale="c"/>
+                <TemperatureInput scale="f"/>
+            </div>
+        );
+    }
+}
+ReactDOM.render(<Calculator />,document.getElementById('root'));
+//https://reactjs.org/docs/lifting-state-up.html
+//The inputs stay in sync because their values are computed from the same state:

@@ -73,3 +73,7 @@ body {
     background-color: red;
     text-align: center;
   }
+  select{
+    width: 30%;
+    height:30px;
+  }
