@@ -1246,9 +1246,27 @@ import './index.css';
 //      }
 //  }
 //  ReactDOM.render(<SignUpDialog/>, document.getElementById('root'));
+
+//===================================
+// class ShoppingList extends React.Component{
+//     render(){
+//         return(
+//             <div className="shopping-list">
+//                 <h1>Shopping List for </h1>
+//                 <ul>
+//                     <li>Instagram</li>
+//                     <li>WhatsApp</li>
+//                     <li>Facebook</li>
+//                 </ul>
+//             </div>
+//         );
+//     }
+// }
 //========================================
 //Thinking In React
 //========================================
+
+//===========================
 class ProductCategoryRow extends React.Component{
     render(){
         const category = this.props.category;
