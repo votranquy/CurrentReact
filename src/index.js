@@ -1559,148 +1559,220 @@ import './index.css';
 //     {price: '$58',stocked: true,  name: 'Boot'},
 //     {price: '$69',stocked: false, name: 'Jacket'},
 // ];
-
 // ReactDOM.render(<FilterableProductTable products={PRODUCTS} />, document.getElementById('root'));
 
-//============================================================
+
+//==================================================================
 //Employee Table
-//=============================================================
+//==================================================================
+
+// class Form extends React.Component {
+//     constructor(props){
+//         super(props);
+//         this.initialState = {
+//             name: '',
+//             job: ''
+//         };
+//         this.state = this.initialState;
+//     }
+
+//     handleChange = event => {
+//         const {name, value} = event.target;
+//         this.setState({
+//             [name]:value
+//         });
+//     }
+//     submitForm = () => {
+//         this.props.handleSubmit(this.state);
+//         this.setState(this.initialState);
+//     }
+
+//     render(){
+//         const {name,job} = this.state;
+//         return(
+//         <form name="formDemo" id="formDemo" >
+//             <label>Name</label>
+//             <input 
+//                 type="text" 
+//                 name="name"
+//                 id="name" 
+//                 value={name}
+//                 onChange={this.handleChange} />
+//             <label>Job</label>
+//             <input 
+//                 type="text" 
+//                 name="job"
+//                 id="job" 
+//                 value={job} 
+//                 onChange={this.handleChange}/>
+//             <button 
+//                 type="button" 
+//                 value="submit" 
+//                 onClick={this.submitForm} >SUBMIT</button>
+//         </form>
+//         );
+//     }
+// }
+// const TableHeader = () => { 
+//     return (
+//         <thead>
+//             <tr>
+//                 <th>Name</th>
+//                 <th>Job</th>
+//                 <th>Delete</th>
+//             </tr>
+//         </thead>
+//     );
+// }
+// const TableBody = props => {
+//     const rows = props.characterData.map((row,index)=>{
+//         return (
+//             <tr key={index}>
+//                 <td>{row.name}</td>
+//                 <td>{row.job}</td>
+//                 <td><button onClick={() => props.removeCharacter(index)}>Delete</button></td>
+//             </tr>
+//         );
+//     }); 
+//     return <tbody>{rows}</tbody>;
+// }
+// class Table extends React.Component {
+//     render() {
+//         const { characterData, removeCharacter } = this.props;
+//         return(
+//             <table>
+//                 <TableHeader />
+//                 <TableBody  
+//                     characterData={characterData}
+//                     removeCharacter={removeCharacter}
+//                 />
+//             </table>
+//         );
+//     }
+// }
+// class App extends React.Component {
+//     state = {
+//         characters:[
+//             {
+//                 'name': 'Tamana',
+//                 'job': 'Student'
+//             },
+//             {
+//                 'name': 'Mack',
+//                 'job': 'Teacher'
+//             },
+//             {
+//                 'name': 'Jack',
+//                 'job': 'Athletic'
+//             },
+//             {
+//                 'name': 'Tenis',
+//                 'job': 'Goalkeeper'
+//             }
+//         ]
+//     };
+
+//     removeCharacter = index => {
+//         const {characters} = this.state;
+//         this.setState({
+//             characters: characters.filter((character,i) => {
+//                 return i !== index;
+//             })
+//         });
+//     }
+
+//     handleSubmit = character => {
+//         this.setState({characters:[...this.state.characters,character]});
+//     }
+
+//     render(){
+//         const {characters}=this.state;
+//         return(
+//             <div className="container">
+//                 <Table 
+//                     characterData={characters}
+//                     removeCharacter={this.removeCharacter}
+//                 />
+//                 <Form handleSubmit = {this.handleSubmit} />
+//             </div>
+//         );
+//     }
+// }
+// ReactDOM.render(<App/>, document.getElementById('root'));
+//==============================================================
+//
+//=======================================================================
 
 
-
-class Form extends React.Component {
+class Table extends React.Component{
     constructor(props){
         super(props);
-
-        this.initialState = {
-            name: '',
-            job: ''
-        };
-
-        this.state = this.initialState;
+        this.clickRemove = this.clickRemove.bind(this);
     }
-
-    handleChange = event => {
-        const {name, value} = event.target;
-        this.setState({
-            [name]:value
-        });
+    clickRemove(index){
+        this.props.onRemoveCharacter(index);
     }
-
-    submitForm = () => {
-        this.props.handleSubmit(this.state);
-        this.setState(this.initialState);
-    }
-
     render(){
-        const {name,job} = this.state;
-        return(
-        <form name="formDemo" id="formDemo" >
-            <label>Name</label>
-            <input 
-                type="text" 
-                name="name"
-                id="name" 
-                value={name}
-                onChange={this.handleChange} />
-            <label>Job</label>
-            <input 
-                type="text" 
-                name="job"
-                id="job" 
-                value={job} 
-                onChange={this.handleChange}/>
-            <button 
-                type="button" 
-                value="submit" 
-                onClick={this.submitForm} >SUBMIT</button>
-        </form>
-        );
-    }
-}
-const TableHeader = () => { 
-    return (
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Job</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-    );
-}
-const TableBody = props => {
-    const rows = props.characterData.map((row,index)=>{
-        return (
-            <tr key={index}>
-                <td>{row.name}</td>
-                <td>{row.job}</td>
-                <td><button onClick={() => props.removeCharacter(index)}>Delete</button></td>
-            </tr>
-        );
-    }); 
-    return <tbody>{rows}</tbody>;
-}
-class Table extends React.Component {
-    render() {
-        const { characterData, removeCharacter } = this.props;
+        const characters=this.props.characters;
+        const rows=[];
+        characters.forEach((character,index) => {
+            rows.push(
+                <tr key={index}>
+                    <td>{character.name}</td>
+                    <td>{character.job}</td>
+                    <td><button onClick={this.clickRemove(index)} /></td>
+                </tr>
+            );
+        });
         return(
             <table>
-                <TableHeader />
-                <TableBody  
-                    characterData={characterData}
-                    removeCharacter={removeCharacter}
-                />
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Job</td>
+                        <td>Remove</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {rows}
+                </tbody>
             </table>
         );
     }
 }
 class App extends React.Component {
-    state = {
+    state={
         characters:[
-            {
-                'name': 'Tamana',
-                'job': 'Student'
-            },
-            {
-                'name': 'Mack',
-                'job': 'Teacher'
-            },
-            {
-                'name': 'Jack',
-                'job': 'Athletic'
-            },
-            {
-                'name': 'Tenis',
-                'job': 'Goalkeeper'
-            }
+            {'name':'Alibaba','job':'fammer'},
+            {'name':'Alibabon','job':'thief'},
+            {'name':'Alibanam','job':'doctor'},
         ]
     };
-
+    constructor(props){
+        super(props);
+        this.removeCharacter=this.removeCharacter.bind(this);
+    }
     removeCharacter = index => {
         const {characters} = this.state;
         this.setState({
-            characters: characters.filter((character,i) => {
+            characters: characters.filter((character,i)=>{
                 return i !== index;
             })
         });
     }
-
-    handleSubmit = character => {
-        this.setState({characters:[...this.state.characters,character]});
-    }
-
     render(){
         const {characters}=this.state;
         return(
             <div className="container">
                 <Table 
-                    characterData={characters}
-                    removeCharacter={this.removeCharacter}
+                    characters={characters}
+                    onRemoveCharacter={this.removeCharacter}
                 />
-                <Form handleSubmit = {this.handleSubmit} />
+                {/* <Form 
+                /> */}
             </div>
         );
     }
 }
-ReactDOM.render(<App />, document.getElementById('root'));
+
+ReactDOM.render(<App/>,document.getElementById('root'));
