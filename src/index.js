@@ -434,9 +434,9 @@ import './index.css';
 //     );
 // }
 // setInterval(tick,1000);
-//======================
+//===========================================================
 //Clock with Class Clock
-//===========================================
+//===========================================================
 // class Clock extends React.Component{
 //     render(){
 //         return(
@@ -451,9 +451,9 @@ import './index.css';
 //     ReactDOM.render(<Clock date={new Date()}/>,document.getElementById('root'));
 // }
 // setInterval(tick,1000);
-//===================================
-//Clock with Sate
-//=======================================
+//===================================================================
+//Clock with State
+//====================================================================
 // class Clock extends React.Component{
 //     constructor(props){
 //         super(props);
@@ -495,15 +495,14 @@ import './index.css';
 //             <Clock/>
 //         </div>
 //     );
-
 // }
 // ReactDOM.render(<App/>,document.getElementById('root'));
 //NOTICE: State only is accessible to any component that owns it
 
 
-//==========================================
+//======================================================
 //Update Multiole State
-//==============================================
+//=====================================================
 // class Status extends React.Component {
 //     constructor(props){
 //         super(props);
@@ -535,9 +534,9 @@ import './index.css';
 // }
 // ReactDOM.render(<Status/>,document.getElementById('root'));
 
-//=================================
+//===============================================================
 //Handle Click
-//===============================
+//===============================================================
 // class ActionLink extends React.Component{
 //     constructor(props){
 //         super(props);
@@ -553,9 +552,9 @@ import './index.css';
 //     }
 // }
 // ReactDOM.render( <ActionLink/>, document.getElementById('root'));
-//=======================================
+//=======================================================
 //Zero Method: Toggle Button using bind
-//========================================
+//==========================================================
 // class Toggle extends React.Component {
 //     constructor(props){
 //         super(props);
@@ -576,9 +575,9 @@ import './index.css';
 //     }
 // }
 // ReactDOM.render(<Toggle/>, document.getElementById('root'));
-//==================================
+//==================================================================
 //FIRST METHOD: Using public class fields syntax for Handleing Event
-//===================================================
+//==================================================================
 // class LoggingButton extends React.Component{
 //     constructor(props){
 //         super(props);
@@ -599,9 +598,9 @@ import './index.css';
 //     }
 // }
 // ReactDOM.render(<LoggingButton/>,document.getElementById('root'));
-//==========================================================
+//========================================================================
 //SECOND METHOD: Using Arrow function for handling Event
-//==========================================================
+//=========================================================================
 // class LoggingButton extends React.Component{
 //     constructor(props){
 //         super(props);
@@ -624,9 +623,9 @@ import './index.css';
 //     }
 // }
 // ReactDOM.render(<LoggingButton />,document.getElementById('root'));
-//======================================================
+//===========================================================================
 //Conditional REndering
-//=============================================================
+//=============================================================================
 // function UserGreeting(props){
 //     return(<h1>Welcome back</h1>);
 // }
@@ -641,9 +640,9 @@ import './index.css';
 //     return <GuestGreeting/>;
 // }
 // ReactDOM.render(<Greeting isLoggedIn={true}/>,document.getElementById('root'));
-//====================================================================
-//
-//====================================================================
+//===================================================================================
+//=
+//====================================================================================
 // function LoginButton(props){
 //     return(
 //         <button onClick={props.onClick}>Login</button>
@@ -702,10 +701,9 @@ import './index.css';
 //     }
 // }
 // ReactDOM.render(<LoginControl />,document.getElementById('root'));
- 
-//======================================================================
+//=====================================================================================
 //
-//======================================================================
+//=====================================================================================
 // function Mailbox(props){
 //     const unreadMessages = props.unreadMessages;
 //     return(
@@ -762,15 +760,15 @@ import './index.css';
 //List and key
 //=====================================================
 // const numbers = [1,2,3,4,5];
-// const listItems = numbers.map( (number)=><li>{number*2}</li>  );
+// const listItems = numbers.map( (number) => <li>{number*2}</li>  );
 
 // ReactDOM.render(
 //     <ul>{listItems}</ul>,
 //     document.getElementById('root')
 // );
-//===========================================
+//============================================================
 //Build by Class
-//=========================================
+//============================================================
 // function NumberList(props){
 //     const numbers=props.numbers;
 //     const listItems = numbers.map( 
@@ -784,10 +782,9 @@ import './index.css';
 // }
 // const numbers = [1,2,3,4,5];
 // ReactDOM.render(<NumberList numbers={numbers}/>, document.getElementById('root'));
-
-//===========================================
+//=======================================================================================
 //Key for list
-//==============================================
+//=======================================================================================
 // function TodoList(props){
 //     const todos=props.todos;
 //     const todoItems = todos.map((todo) =>
@@ -800,9 +797,9 @@ import './index.css';
 // const todos = ['Do home work','Go shopping','Meet friends'];
 // ReactDOM.render(<TodoList todos={todos}/>, document.getElementById('root'));
 
-//===============================
+//======================================================================================
 //
-//======================================
+//======================================================================================
 // function ListItems(props){
 //     return <li>{props.value}</li>;
 // }
@@ -867,14 +864,13 @@ import './index.css';
 // ];
 // ReactDOM.render(<Blog posts={posts}/>,document.getElementById('root'));
 
-//=====================================
+//=========================================================================
 //Form
-//====================================
+//==========================================================================
 // class NameForm extends React.Component {
 //   constructor(props) {
 //     super(props);
 //     this.state = {value: ''};
-
 //     this.handleChange = this.handleChange.bind(this);
 //     this.handleSubmit = this.handleSubmit.bind(this);
 //   }
@@ -904,11 +900,10 @@ import './index.css';
 //     );
 //   }
 // }
-
 // ReactDOM.render( <NameForm />,document.getElementById('root'));
-//==================================================
+//=============================================================================
 //
-//=======================================================
+//==============================================================================
 // class FlavorForm extends React.Component{
 //     constructor(props){
 //         super(props);
@@ -941,10 +936,9 @@ import './index.css';
 //     }
 // }
 // ReactDOM.render(<FlavorForm/>, document.getElementById('root'));
-
-//=============================================
+//==================================================================================
 //
-//===============================================
+//==================================================================================
 // class Reservation extends React.Component{
 //     constructor(props){
 //         super(props);
@@ -994,9 +988,9 @@ import './index.css';
 // }
 // ReactDOM.render(<Reservation/>, document.getElementById('root'));
 
-//===========================================================
+//=========================================================================
 //Cencius: Water boil or not
-//===========================================================
+//=========================================================================
 // function BoilingVerdict(props){
 //     if(props.celsius >= 100) return <p>The water would boil.</p>
 //     return <p>The water would not boil.</p>
@@ -1052,18 +1046,12 @@ import './index.css';
 // ReactDOM.render(<Myword/>,document.getElementById('root'));
 
 //======================================
-//Template 
+//Template water boil or not
 //==================================================================
 // const scaleNames ={
 //     c: 'Celsius',
 //     f: 'Farenheit'
 // };
-// function toCelsius(fahrenheit){
-//     return(fahrenheit -32)*5/9;
-// }
-// function toFahrenheit(celsius){
-//     return (celsius*9/5)+32;
-// }
 // function tryConvert(temperature,scale){
 //     const input = parseFloat(temperature);
 //     if(Number.isNaN(input)){return '';}
@@ -1262,180 +1250,457 @@ import './index.css';
 //         );
 //     }
 // }
-//========================================
+//==============================================================
 //Thinking In React
-//========================================
+//==============================================================
+//
+//==============================================================
+// class ProductCategoryRow extends React.Component{
+//     render(){
+//         const category = this.props.category;
+//         return(
+//             <tr>
+//                 <td colSpan="2">
+//                     {category}
+//                 </td>
+//             </tr>
+//         );
+//     }
+// }
 
-//===========================
+// class ProductRow extends React.Component{
+//     render(){
+//         const product = this.props.product;
+//         const name = product.stocked ?
+//             product.name :
+//             <span style={{color:'red'}}>
+//                 {product.name}
+//             </span>;
+//         return(
+//             <tr>
+//                 <td>{name}</td>
+//                 <td>{product.price}</td>
+//             </tr>
+//         );
+//     }
+// }
 
-class ProductCategoryRow extends React.Component{
-    render(){
-        const category = this.props.category;
-        return(
-            <tr>
-                <th colSpan="2">
-                    {category}
-                </th>
-            </tr>
-        );
+// class ProductTable extends React.Component{
+//     render(){
+//         const filterText = this.props.filterText;
+//         const inStockOnly=this.props.inStockOnly;
+
+//         const rows=[];
+//         let lastCategory=null;
+
+//         this.props.products.forEach((product) => {
+//             if(product.name.indexOf(filterText) === -1){
+//                 return;
+//             }
+//             if(inStockOnly && !product.stocked){
+//                 return;
+//             }
+//             if(product.category !== lastCategory){
+//                 rows.push(
+//                     <ProductCategoryRow 
+//                         category={product.category}
+//                         key={product.category}
+//                     />
+//                 );
+//             }
+//             rows.push(
+//                 <ProductRow 
+//                     product={product}
+//                     key={product.name}
+//                 />
+//             );
+//             lastCategory = product.category;
+//         });
+//         return(
+//             <table>
+//                 <tbody>
+//                     <tr>
+//                         <th>Name</th>
+//                         <th>Price</th>
+//                     </tr>
+//                 </tbody>
+//                 <tbody>
+//                     {rows}
+//                 </tbody>
+//             </table>
+//         );
+//     }
+// }
+
+// class SearchBar extends React.Component {
+//     constructor(props) {
+//       super(props);
+//       this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+//       this.handleInStockChange = this.handleInStockChange.bind(this);
+//     }
+    
+//     handleFilterTextChange(e) {
+//       this.props.onFilterTextChange(e.target.value);
+//     }
+    
+//     handleInStockChange(e) {
+//       this.props.onInStockChange(e.target.checked);
+//     }
+    
+//     render() {
+//       return (
+//         <form>
+//           <input
+//             type="text"
+//             placeholder="Search..."
+//             value={this.props.filterText}
+//             onChange={this.handleFilterTextChange}
+//           />
+//           <p>
+//             <input
+//               type="checkbox"
+//               checked={this.props.inStockOnly}
+//               onChange={this.handleInStockChange}
+//             />
+//             {' '}
+//             Only show products in stock
+//           </p>
+//         </form>
+//       );
+//     }
+//   }
+
+// class FilterableProductTable extends React.Component{
+//     constructor(props){
+//         super(props);
+//         this.state = {
+//             filterText: '',
+//             inStockOnly: false,
+//         };
+//         this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+//         this.handleInStockChange = this.handleInStockChange.bind(this);
+//     }
+
+//     handleFilterTextChange(filterText){
+//         this.setState({
+//             filterText: filterText
+//         });
+//     }
+//     handleInStockChange(inStockOnly){
+//         this.setState({
+//             inStockOnly: inStockOnly
+//         });
+//     }    
+
+//     render(){
+//         return(
+//             <div>
+//                 <SearchBar 
+//                     filterText={this.state.filterText}
+//                     inStockOnly={this.state.inStockOnly}
+//                     onFilterTextChange={this.handleFilterTextChange}
+//                     onInStockChange={this.handleInStockChange}
+//                 />
+//                 <ProductTable 
+//                     products={this.props.products}
+//                     filterText={this.state.filterText}
+//                     inStockOnly={this.state.inStockOnly}
+//                 />
+//             </div>
+//         );
+//     }
+// }
+// const PRODUCTS =[
+//     {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
+//     {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
+//     {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball 7'},
+//     {category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch'},
+//     {category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
+//     {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'},
+//     {category: 'Furniture', price: '$80.99', stocked: true, name: 'Capet'},
+//     {category: 'Furniture', price: '$82.99', stocked: false, name: 'Cabinet'},
+//     {category: 'Furniture', price: '$85.99', stocked: true, name: 'Sofa 7'},
+//     {category: 'Furniture', price: '$120.99', stocked: true, name: 'Bed'},
+// ];
+// ReactDOM.render(
+//     <FilterableProductTable products={PRODUCTS}/>, document.getElementById('root')
+// );
+//https://reactjs.org/docs/thinking-in-react.html
+//
+//=====================================================================
+//
+//=====================================================================
+// class ProductRow extends React.Component{
+//     render(){
+//         const product = this.props.product;
+//         const name = product.stocked ? product.name : <span style={{color:'red'}}>{product.name}</span>;
+//         return(
+//             <tr>
+//                 <td>{name}</td>
+//                 <td>{product.price}</td>
+//             </tr>
+//         );
+//     }
+// }
+// class SearchBar extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.handleInStockChange = this.handleInStockChange.bind(this);
+//         this.handleSearchTextChange = this.handleSearchTextChange.bind(this);
+//     }
+//     handleInStockChange(e){
+//         this.props.onInStockChange(e.target.checked);
+//     }
+//     handleSearchTextChange(e){
+//         this.props.onSearchTextChange(e.target.value);
+//     }
+//     render(){
+//         return(
+//             <form>
+//                 <input 
+//                     type="text" 
+//                     placeholder="Searching......"
+//                     onChange={this.handleSearchTextChange}
+//                 />
+//                 <p>
+//                     <input 
+//                         type="checkbox" 
+//                         checked={this.props.inStock}
+//                         onChange={this.handleInStockChange}
+//                     />
+//                     Only show products in stock
+                   
+//                 </p>
+//             </form>
+//         );
+//     }
+// }
+// class ProductTable extends React.Component{
+//     render(){
+//         const rows = [];
+//         //let lastCategory = null;
+//         const inStock=this.props.inStock;
+//         const searchText=this.props.searchText;
+//         this.props.products.forEach((product) => {
+
+//             if(product.name.indexOf(searchText)=== -1){ return;}
+//             if(inStock && !product.stocked){return;}
+//             rows.push(
+//                 <ProductRow
+//                     product={product}
+//                     key={product.name}
+//                 />
+//             );
+//             //lastCategory = product.category;
+//         });
+//         return (
+//             <table>
+//                 <thead>
+//                     <tr>
+//                         <th>NAME</th>
+//                         <th>PRICE</th>
+//                     </tr>
+//                 </thead>
+//                 <tbody>
+//                     {rows}
+//                 </tbody>
+//             </table>
+//         );
+//     }
+// }
+// class FilterableProductTable extends React.Component {
+//     constructor(props){
+//         super(props);
+//         this.state = {
+//             inStock:false,
+//             searchText:'',
+//         };
+//         this.handleInStockChange = this.handleInStockChange.bind(this);
+//         this.handleSearchTextChange = this.handleSearchTextChange.bind(this); 
+//     }
+//     handleInStockChange(inStock){
+//         this.setState({
+//             inStock: inStock,
+//         });
+//     }
+//     handleSearchTextChange(searchText){
+//         this.setState({
+//             searchText: searchText,
+//         });
+//     }
+//     render(){
+//         return(
+//             <div>
+//                 <SearchBar
+//                     inStock={this.state.inStock}
+//                     searchText={this.state.searchText}
+//                     onInStockChange={this.handleInStockChange}
+//                     onSearchTextChange={this.handleSearchTextChange} 
+//                 />
+//                 <ProductTable 
+//                     products={this.props.products}
+//                     inStock={this.state.inStock}
+//                     searchText={this.state.searchText}
+//                 />
+//             </div>
+//         );
+//     }
+// }
+
+// const PRODUCTS = [
+//     {price: '$50',stocked: true,  name: 'Football'},
+//     {price: '$49',stocked: false, name: 'Baseball'},
+//     {price: '$52',stocked: true,  name: 'Tennis ball'},
+//     {price: '$58',stocked: false, name: 'Ping pong ball'},
+//     {price: '$54',stocked: true,  name: 'Badminton ball'},
+//     {price: '$53',stocked: false, name: 'Basket ball'},
+//     {price: '$56',stocked: true,  name: 'Hockey ball'},
+//     {price: '$60',stocked: false, name: 'Volleyball'},
+//     {price: '$58',stocked: true,  name: 'Boot'},
+//     {price: '$69',stocked: false, name: 'Jacket'},
+// ];
+
+// ReactDOM.render(<FilterableProductTable products={PRODUCTS} />, document.getElementById('root'));
+
+//============================================================
+//Employee Table
+//=============================================================
+
+
+
+class Form extends React.Component {
+    constructor(props){
+        super(props);
+
+        this.initialState = {
+            name: '',
+            job: ''
+        };
+
+        this.state = this.initialState;
     }
-}
 
-class ProductRow extends React.Component{
-    render(){
-        const product = this.props.product;
-        const name = product.stocked ?
-            product.name :
-            <span style={{color:'red'}}>
-                {product.name}
-            </span>;
-        return(
-            <tr>
-                <td>{name}</td>
-                <td>{product.price}</td>
-            </tr>
-        );
-    }
-}
-
-class ProductTable extends React.Component{
-    render(){
-        const filterText = this.props.filterText;
-        const inStockOnly=this.props.inStockOnly;
-
-        const rows=[];
-        let lastCategory=null;
-
-        this.props.products.forEach((product) => {
-            if(product.name.indexOf(filterText) === -1){
-                return;
-            }
-            if(inStockOnly && !product.stocked){
-                return;
-            }
-            if(product.category !== lastCategory){
-                rows.push(
-                    <ProductCategoryRow 
-                        category={product.category}
-                        key={product.category}/>
-                );
-            }
-            rows.push(
-                <ProductRow 
-                    product={product}
-                    key={product.name}
-                />
-            );
-            lastCategory = product.category;
+    handleChange = event => {
+        const {name, value} = event.target;
+        this.setState({
+            [name]:value
         });
+    }
+
+    submitForm = () => {
+        this.props.handleSubmit(this.state);
+        this.setState(this.initialState);
+    }
+
+    render(){
+        const {name,job} = this.state;
+        return(
+        <form name="formDemo" id="formDemo" >
+            <label>Name</label>
+            <input 
+                type="text" 
+                name="name"
+                id="name" 
+                value={name}
+                onChange={this.handleChange} />
+            <label>Job</label>
+            <input 
+                type="text" 
+                name="job"
+                id="job" 
+                value={job} 
+                onChange={this.handleChange}/>
+            <button 
+                type="button" 
+                value="submit" 
+                onClick={this.submitForm} >SUBMIT</button>
+        </form>
+        );
+    }
+}
+const TableHeader = () => { 
+    return (
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Job</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+    );
+}
+const TableBody = props => {
+    const rows = props.characterData.map((row,index)=>{
+        return (
+            <tr key={index}>
+                <td>{row.name}</td>
+                <td>{row.job}</td>
+                <td><button onClick={() => props.removeCharacter(index)}>Delete</button></td>
+            </tr>
+        );
+    }); 
+    return <tbody>{rows}</tbody>;
+}
+class Table extends React.Component {
+    render() {
+        const { characterData, removeCharacter } = this.props;
         return(
             <table>
-                <thead>
-                    <td>Name</td>
-                    <td>Price</td>
-                </thead>
-                <tbody>
-                    {rows}
-                </tbody>
+                <TableHeader />
+                <TableBody  
+                    characterData={characterData}
+                    removeCharacter={removeCharacter}
+                />
             </table>
         );
     }
 }
+class App extends React.Component {
+    state = {
+        characters:[
+            {
+                'name': 'Tamana',
+                'job': 'Student'
+            },
+            {
+                'name': 'Mack',
+                'job': 'Teacher'
+            },
+            {
+                'name': 'Jack',
+                'job': 'Athletic'
+            },
+            {
+                'name': 'Tenis',
+                'job': 'Goalkeeper'
+            }
+        ]
+    };
 
-class SearchBar extends React.Component {
-    constructor(props) {
-      super(props);
-      this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
-      this.handleInStockChange = this.handleInStockChange.bind(this);
-    }
-    
-    handleFilterTextChange(e) {
-      this.props.onFilterTextChange(e.target.value);
-    }
-    
-    handleInStockChange(e) {
-      this.props.onInStockChange(e.target.checked);
-    }
-    
-    render() {
-      return (
-        <form>
-          <input
-            type="text"
-            placeholder="Search..."
-            value={this.props.filterText}
-            onChange={this.handleFilterTextChange}
-          />
-          <p>
-            <input
-              type="checkbox"
-              checked={this.props.inStockOnly}
-              onChange={this.handleInStockChange}
-            />
-            {' '}
-            Only show products in stock
-          </p>
-        </form>
-      );
-    }
-  }
-
-class FilterableProductTable extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            filterText: '',
-            inStockOnly: false,
-        };
-        this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
-        this.handleInStockChange = this.handleInStockChange.bind(this);
-    }
-
-    handleFilterTextChange(filterText){
+    removeCharacter = index => {
+        const {characters} = this.state;
         this.setState({
-            filterText: filterText
+            characters: characters.filter((character,i) => {
+                return i !== index;
+            })
         });
     }
-    handleInStockChange(inStockOnly){
-        this.setState({
-            inStockOnly: inStockOnly
-        });
-    }    
+
+    handleSubmit = character => {
+        this.setState({characters:[...this.state.characters,character]});
+    }
 
     render(){
+        const {characters}=this.state;
         return(
-            <div>
-                <SearchBar 
-                    filterText={this.state.filterText}
-                    inStockOnly={this.state.inStockOnly}
-                    onFilterTextChange={this.handleFilterTextChange}
-                    onInStockChange={this.handleInStockChange}
+            <div className="container">
+                <Table 
+                    characterData={characters}
+                    removeCharacter={this.removeCharacter}
                 />
-                <ProductTable 
-                    products={this.props.products}
-                    filterText={this.state.filterText}
-                    inStockOnly={this.state.inStockOnly}
-                />
+                <Form handleSubmit = {this.handleSubmit} />
             </div>
         );
     }
 }
-const PRODUCTS =[
-    {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
-    {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
-    {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball 7'},
-    {category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch'},
-    {category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
-    {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'},
-    {category: 'Furniture', price: '$80.99', stocked: true, name: 'Capet'},
-    {category: 'Furniture', price: '$82.99', stocked: false, name: 'Cabinet'},
-    {category: 'Furniture', price: '$85.99', stocked: true, name: 'Sofa 7'},
-    {category: 'Furniture', price: '$120.99', stocked: true, name: 'Bed'},
-
-
-];
-ReactDOM.render(
-    <FilterableProductTable products={PRODUCTS}/>, document.getElementById('root')
-);
-//https://reactjs.org/docs/thinking-in-react.html
-//
+ReactDOM.render(<App />, document.getElementById('root'));
