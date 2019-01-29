@@ -1875,3 +1875,4 @@ class App extends React.Component{
     }
 }
 ReactDOM.render(<App/>,document.getElementById('root'));
+//https://medium.com/andy-le/h%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-x%C3%A2y-d%E1%BB%B1ng-%E1%BB%A9ng-d%E1%BB%A5ng-todo-v%E1%BB%9Bi-react-4f5376e4be2c
