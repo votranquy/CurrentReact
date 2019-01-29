@@ -2,10 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-
-// import ShoppingList from './ShoppingList'
-
-
 //====================
 // The Tic Tac Toe Game
 //=====================
@@ -1699,80 +1695,183 @@ import './index.css';
 //     }
 // }
 // ReactDOM.render(<App/>, document.getElementById('root'));
-//==============================================================
-//
+//======================================================================
+//NOT WORKING
 //=======================================================================
+// class Form extends React.Component{
+    
+//     constructor(props){
+//         super(props);
+//         this.initialState ={
+//             name:'',
+//             job:'',
+//         };
+//         this.state = this.initialState;
+//     }
 
+//     handleChange = event => {
+//         const {name,value} =event.target;
+//         this.setState({
+//             [name]:value
+//         });
+//     }
 
-class Table extends React.Component{
-    constructor(props){
-        super(props);
-        this.clickRemove = this.clickRemove.bind(this);
-    }
-    clickRemove(index){
-        this.props.onRemoveCharacter(index);
+//     submitForm= () => {
+//         this.props.handleSubmit(this.state);
+//         this.setState(this.initialState);
+//     }
+
+//     render(){
+//         return(
+//             <form>
+//                 <input type="text" name="name" id="job" value={name} onChange={this.handleChange}></input>
+//                 <input type="text" name="name" id="job" value={job} onChange={this.handleChange}></input>
+//                 <button type="button" value="submit" onClick={this.submitForm}>SUBMIT</button>
+//             </form>
+//         );
+//     }
+// }
+// const TableHeader = () =>{
+//     return(
+//         <thead>
+//             <tr>
+//                 <th>NAME</th>
+//                 <th>JOB</th>
+//                 <th>DELETE</th>
+//             </tr>
+//         </thead>
+//     );
+// }
+
+// class TableBody extends React.Component{
+//     render(){
+//         const rows=[];
+//         const {characterData} = this.props;
+//         characterData.forEach( (character,index) => {
+//             rows.push(
+//                     <tr key={index}>
+//                         <td>{character.name}</td>
+//                         <td>{character.job}</td>
+//                         <td><button>DELETE</button></td>
+//                     </tr>
+//             );
+//         });
+//         return <tbody>{rows}</tbody>;
+//     }
+// }
+// class Table extends React.Component {
+//     render(){
+//         const {characterData} = this.props;
+//         return(
+//             <table>
+//                 <TableHeader />
+//                 <TableBody 
+//                     characterData={characterData}
+//                 />
+//             </table>
+//         );
+//     }
+// }
+
+// class App extends React.Component {
+
+//     // constructor(props){
+//     //     super(props);
+//     // }
+//     handleSubmit = character => {
+//         this.setState({characters:[...this.props.characters,character]});
+//     }
+//     render(){
+//         const {characters}=this.props;
+//         return(  
+//             <div className="container">
+//                 <Table
+//                     characterData={characters}
+//                 />
+//                 <Form handleSubmit = {this.handleSubmit}
+
+//                 />
+//             </div>
+//         );
+//     }
+// }
+
+// let CHARACTERS=[
+//     {'name':'Alex','job':'student'},
+//     {'name':'NewTon','job':'dentist'},
+//     {'name':'Peter','job':'athletic'},
+//     {'name':'Corn','job':'farmer'}
+// ];
+// ReactDOM.render(<App characters={CHARACTERS}/>, document.getElementById('root'));
+//============================================================================
+//
+//============================================================================
+class TodoList extends React.Component{
+    handleInput = e => {
+        e.preventDefault();
+        const taskName = this.reft.taskInput.value;
+        this.props.addItem(taskName);
     }
     render(){
-        const characters=this.props.characters;
-        const rows=[];
-        characters.forEach((character,index) => {
-            rows.push(
-                <tr key={index}>
-                    <td>{character.name}</td>
-                    <td>{character.job}</td>
-                    <td><button onClick={this.clickRemove(index)} /></td>
-                </tr>
-            );
-        });
         return(
-            <table>
-                <thead>
-                    <tr>
-                        <td>Name</td>
-                        <td>Job</td>
-                        <td>Remove</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {rows}
-                </tbody>
-            </table>
-        );
-    }
-}
-class App extends React.Component {
-    state={
-        characters:[
-            {'name':'Alibaba','job':'fammer'},
-            {'name':'Alibabon','job':'thief'},
-            {'name':'Alibanam','job':'doctor'},
-        ]
-    };
-    constructor(props){
-        super(props);
-        this.removeCharacter=this.removeCharacter.bind(this);
-    }
-    removeCharacter = index => {
-        const {characters} = this.state;
-        this.setState({
-            characters: characters.filter((character,i)=>{
-                return i !== index;
-            })
-        });
-    }
-    render(){
-        const {characters}=this.state;
-        return(
-            <div className="container">
-                <Table 
-                    characters={characters}
-                    onRemoveCharacter={this.removeCharacter}
-                />
-                {/* <Form 
-                /> */}
+            <div className="todoListMain">
+                <div className="header">
+                    <form onSubmit={this.handleInput}>
+                        <input placeholder="Task" ref="taskInput"></input>
+                        <button type="submit">Add Task</button>
+                    </form>
+                </div>
             </div>
         );
     }
 }
-
+class TodoItems extends React.Component{
+    createTasks = item => {
+        return(
+            <li key={item.key}>
+                {item.text}
+            </li>
+        );
+    }
+    render(){
+        const {entries} = this.props;
+        const listItems = entries.map(this.createTasks);
+        return <ul className="theList">{listItems}</ul>
+    }
+}
+class App extends React.Component{
+    constructor(){
+        super();
+        this.state = {
+            items: [
+                {key:1, text:"A"},
+                {key:2, text:"B"},
+                {key:3, text:"C"},
+            ],
+        }
+    }
+    addItem = (taskName) => {
+        const newTask ={
+            text:taskName,
+            key:Date.now(),
+        };
+        if(taskName !== null && taskName !==''){
+            // const items = [...this.state.items,newTask];
+            // this.setState({items:items});
+            this.setState( state =>{
+                return{
+                    items: [...state.items,newTask]
+                }
+            })
+        }
+    }
+    render(){
+        return(
+            <div>
+                <TodoList addItem={this.addItem} />
+                <TodoItems entries={this.state.items} />
+            </div>
+        );
+    }
+}
 ReactDOM.render(<App/>,document.getElementById('root'));
