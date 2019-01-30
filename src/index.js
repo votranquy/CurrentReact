@@ -1806,9 +1806,9 @@ import './index.css';
 //============================================================================
 //
 //============================================================================
-class TodoList extends React.Component{
+class TodoList extends React.Component {
     handleInput = e => {
-        e.preventDefault();
+        //e.preventDefault();
         const taskName = this.refs.taskInput.value;
         this.props.addItem(taskName);
         this.refs.taskInput.value ='';
@@ -1818,12 +1818,13 @@ class TodoList extends React.Component{
         return(
             <div className="todoListMain">
                 <div className="header">
-                    <form onSubmit={this.handleInput}>
+                    <form>
                         <input 
                             placeholder="Task" 
                             ref="taskInput" />
                         <button 
-                            type="submit">Add Task
+                            type="button" 
+                            onClick={this.handleInput}>Add Task
                         </button>
                     </form>
                 </div>
@@ -1832,16 +1833,26 @@ class TodoList extends React.Component{
     }
 }
 class TodoItems extends React.Component{
-    createTasks = item => {
-        return(
-            <li key={item.key}>
-                {item.text}
-            </li>
-        );
-    }
+    // createTasks = itemTodo => {
+    //     const {removeItem} = this.props;
+    //     return(
+    //         <li key={itemTodo.key}>
+    //             {itemTodo.text} 
+    //             <button type="button" onClick={()=> removeItem(itemTodo.key)}>REMOVE</button>
+    //         </li>
+    //     );
+    // }
+    
     render(){
         const {entries} = this.props;
-        const listItems = entries.map(this.createTasks);
+        const listItems = entries.map((listItem,index)=>{
+            return(
+                <li key={index}>
+                    {listItem.text} 
+                    <button type="button" onClick={()=> this.props.removeItem(index)}>REMOVE</button>
+                </li>
+            );
+        });
         return <ul className="theList">{listItems}</ul>
     }
 }
@@ -1850,9 +1861,9 @@ class App extends React.Component{
         super();
         this.state = {
             items: [
-                {key:1, text:"A"},
-                {key:2, text:"B"},
-                {key:3, text:"C"},
+                // {key:1, text:"Do housework"},
+                // {key:2, text:"Meet Mr. John"},
+                // {key:3, text:"Pick up daughter"},
             ],
         }
     }
@@ -1869,14 +1880,31 @@ class App extends React.Component{
             })
         }
     }
+    removeItem = key =>{
+        const {items} = this.state;
+        this.setState({
+            items: items.filter((item,i)=>{
+                return i !== key;
+            })
+        });
+    }
     render(){
         return(
             <div>
-                <TodoList addItem={this.addItem} />
-                <TodoItems entries={this.state.items} />
+                <TodoList 
+                    addItem={this.addItem} 
+                />
+                <TodoItems 
+                    entries={this.state.items} 
+                    removeItem={this.removeItem}
+                />
             </div>
         );
     }
 }
 ReactDOM.render(<App/>,document.getElementById('root'));
 //https://medium.com/andy-le/h%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-x%C3%A2y-d%E1%BB%B1ng-%E1%BB%A9ng-d%E1%BB%A5ng-todo-v%E1%BB%9Bi-react-4f5376e4be2c
+
+//===============================================================================
+//
+//===============================================================================
