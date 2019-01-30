@@ -1809,16 +1809,22 @@ import './index.css';
 class TodoList extends React.Component{
     handleInput = e => {
         e.preventDefault();
-        const taskName = this.reft.taskInput.value;
+        const taskName = this.refs.taskInput.value;
         this.props.addItem(taskName);
+        this.refs.taskInput.value ='';
+        this.refs.taskInput.focus();
     }
     render(){
         return(
             <div className="todoListMain">
                 <div className="header">
                     <form onSubmit={this.handleInput}>
-                        <input placeholder="Task" ref="taskInput"></input>
-                        <button type="submit">Add Task</button>
+                        <input 
+                            placeholder="Task" 
+                            ref="taskInput" />
+                        <button 
+                            type="submit">Add Task
+                        </button>
                     </form>
                 </div>
             </div>
@@ -1856,11 +1862,9 @@ class App extends React.Component{
             key:Date.now(),
         };
         if(taskName !== null && taskName !==''){
-            // const items = [...this.state.items,newTask];
-            // this.setState({items:items});
-            this.setState( state =>{
+            this.setState( state => {
                 return{
-                    items: [...state.items,newTask]
+                    items: [...state.items, newTask]
                 }
             })
         }
