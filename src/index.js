@@ -1806,100 +1806,293 @@ import './index.css';
 //============================================================================
 //
 //============================================================================
-class TodoForm extends React.Component {
+// class TodoForm extends React.Component {
 
-    handleInput = e => {
-        const taskName = this.refs.taskInput.value;
-        this.props.addItem(taskName);
-        this.refs.taskInput.value ='';
-        this.refs.taskInput.focus();
-    }
+//     handleInput = e => {
+//         const taskName = this.refs.taskInput.value;
+//         this.props.addItem(taskName);
+//         this.refs.taskInput.value ='';
+//         this.refs.taskInput.focus();
+//     }
 
-    render(){
-        return(
-            <div className="todoListMain">
-                <div className="header">
-                    <form>
-                        <input 
-                            placeholder="Task" 
-                            ref="taskInput" />
-                        <button 
-                            type="button" 
-                            onClick={this.handleInput}>Add Task
-                        </button>
-                    </form>
-                </div>
-            </div>
-        );
-    }
+//     render(){
+//         return(
+//             <div className="todoListMain">
+//                 <div className="header">
+//                     <form>
+//                         <input 
+//                             placeholder="Task" 
+//                             ref="taskInput" />
+//                         <button 
+//                             type="button" 
+//                             onClick={this.handleInput}>Add Task
+//                         </button>
+//                     </form>
+//                 </div>
+//             </div>
+//         );
+//     }
 
-}
+// }
 
-class TodoItems extends React.Component{
-    render(){
-        const {entries} = this.props;
-        const listItems = entries.map((listItem,index)=>{
-            return(
-                <li key={index}>
-                    {listItem.text} 
-                    <button type="button" onClick={()=> this.props.removeItem(index)}>REMOVE</button>
-                </li>
-            );
-        });
-        return <ul className="theList">{listItems}</ul>
-    }
-}
+// class TodoList extends React.Component{
+//     render(){
+//         const {entries} = this.props;
+//         const listItems = entries.map((listItem,index)=>{
+//             return(
+//                 <li key={index}>
+//                     {listItem.text} 
+//                     <button type="button" onClick={()=> this.props.removeItem(index)}>REMOVE</button>
+//                 </li>
+//             );
+//         });
+//         return <ul className="theList">{listItems}</ul>
+//     }
+// }
 
-class App extends React.Component{
+// class App extends React.Component{
 
-    constructor(){
-        super();
-        this.state = {
-            items: []
-        };
-    }
+//     constructor(){
+//         super();
+//         this.state = {
+//             items: []
+//         };
+//     }
 
-    addItem = (taskName) => {
-        const newTask = {
-            text:taskName,
-            key:Date.now(),
-        };
+//     addItem = (taskName) => {
+//         const newTask = {
+//             text:taskName,
+//             key:Date.now(),
+//         };
 
-        if(taskName !== null && taskName !==''){
-            this.setState( state => {
-                return{
-                    items: [...state.items, newTask]
-                }
-            })
-        }
-    }
+//         if(taskName !== null && taskName !==''){
+//             this.setState( state => {
+//                 return{
+//                     items: [...state.items, newTask]
+//                 }
+//             })
+//         }
+//     }
     
-    removeItem = key =>{
-        const {items} = this.state;
-        this.setState({
-            items: items.filter((item,i)=>{
-                return i !== key;
-            })
-        });
-    }
+//     removeItem = key =>{
+//         const {items} = this.state;
+//         this.setState({
+//             items: items.filter((item,i)=>{
+//                 return i !== key;
+//             })
+//         });
+//     }
 
-    render(){
-        return(
-            <div>
-                <TodoForm
-                    addItem={this.addItem} 
-                />
-                <TodoItems 
-                    entries={this.state.items} 
-                    removeItem={this.removeItem}
-                />
-            </div>
-        );
-    }
-}
-ReactDOM.render(<App/>,document.getElementById('root'));
+//     render(){
+//         return(
+//             <div>
+//                 <TodoForm
+//                     addItem={this.addItem} 
+//                 />
+//                 <TodoList
+//                     entries={this.state.items} 
+//                     removeItem={this.removeItem}
+//                 />
+//             </div>
+//         );
+//     }
+// }
+// ReactDOM.render(<App/>,document.getElementById('root'));
 //https://medium.com/andy-le/h%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-x%C3%A2y-d%E1%BB%B1ng-%E1%BB%A9ng-d%E1%BB%A5ng-todo-v%E1%BB%9Bi-react-4f5376e4be2c
 
 //===============================================================================
-//
+//Accessibility
 //===============================================================================
+
+// import {Fragment} from 'react';
+
+// function Glossary(props){
+//     return(
+//         <div>
+//             {props.items.map(item => (
+//                 <Fragment key={item.id}>
+//                     <dt>{item.term}: {item.description}</dt>
+//                 </Fragment>
+//             ))}
+//             <label for="firstname">FirstName 
+//                 <span> (required) </span>
+//             </label>
+//             <br></br>
+//             <input type="text" name="firstname" id="firstname"/>
+//         </div>    
+//     );
+// }
+
+// const ITEMS=[
+//     {id:'1',term:'A',description:'233'},
+//     {id:'2',term:'G',description:'23'},
+// ];
+
+// ReactDOM.render(<Glossary items={ITEMS}/>,document.getElementById('root'));
+//=================================================================
+//
+//=================================================================
+
+// const printText = props => {
+//     const {textInput}=this.props;
+//     return(
+//         <div>
+//             {textInput}
+//         </div>
+//     );
+// }
+// class CustomTextInput extends React.Component{
+
+//     constructor(props){
+//         super(props);
+//         this.textInput = React.createRef();
+//     }
+
+//     render(){
+//         return(
+//             <div>
+//                 <input 
+//                     type="text"
+//                     ref={this.textInput}
+//                 />   
+//                 <printText textInput={this.textInput} />
+//             </div>   
+//         );
+//     }
+
+// }
+
+// ReactDOM.render(<CustomTextInput/>,document.getElementById('root'));
+
+//=================================================================
+//
+//=================================================================
+
+
+// function CustomTextInput(props){
+//     return(
+//         <div>
+//             <input 
+//                 type="text"
+//                 ref={props.inputRef}
+//             />   
+//         </div>   
+//     );
+// }
+// class Parent extends React.Component{
+//     constructor(props){
+//         super(props);
+//         this.inputElement = React.createRef();
+//     }
+//     render(){
+//         return(
+//             <CustomTextInput inputRef={this.inputElement} />
+//         );
+//     }
+// }
+// // this.inputElement.current.focus();
+// ReactDOM.render(<Parent/>,document.getElementById('root'));
+
+//=================================================================
+//
+//=================================================================
+
+// class OuterClickExample extends React.Component{
+//     constructor(props){
+//         super(props);
+//         this.state ={isOpen: false};
+//         this.toggleContainer = React.createRef();
+//         this.onClickHandle =this.onClickHandle.bind(this);
+//         this.onClickOutsideHandle = this.onClickOutsideHandle.bind(this);
+//     }
+//     componentDidMount(){
+//         window.addEventListener('click',this.onClickOutsideHandle);
+//     }
+//     conponentWillUnmount(){
+//         window.removeEventListener('click',this.onClickOutsideHandle);
+//     }
+//     onClickHandle(){
+//         this.setState(currentState => ({
+//             isOpen: !currentState.isOpen
+//         }))
+//     }
+//     onClickOutsideHandle(event){
+//         if(this.state.isOpen && !this.toggleContainer.current.contains(event.target)){
+//             this.setState({isOpen:false});
+//         }
+//     }
+//     render(){
+//         return(
+//             <div ref={this.toggleContainer}>
+//                 <button onClick={this.onClickHandle}>Select an option</button>
+//                 {this.state.isOpen ? (
+//                     <ul>
+//                         <li>1</li>
+//                         <li>2</li>
+//                         <li>3</li>
+//                     </ul>
+//                 ): null}
+//                 <button>A</button>
+//                 <button>B</button>
+//             </div>
+//         );
+//     }
+// }
+// ReactDOM.render(<OuterClickExample/>,document.getElementById('root'));
+
+
+//=================================================================
+//
+//=================================================================
+
+class BlurExample extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={isOpen: false};
+        this.timeOutId = null;
+        this.onClickHandler = this.onClickHandler.bind(this);
+        this.onBlurHandler =this.onBlurHandler.bind(this);
+        this.onFocusHandler = this.onFocusHandler.bind(this);
+    }
+    onClickHandler(){
+        this.setState(currentState => ({
+            isOpen: !currentState.isOpen
+        }));
+    }
+    onBlurHandler(){
+        this.timeOutId = setTimeout(()=>{
+            this.setState({
+                isOpen:false    
+            });
+        });
+    }
+    onFocusHandler(){
+        clearTimeout(this.timeOutId);
+    }
+    render(){
+        return(
+            <div 
+                onBlur={this.onBlurHandler}
+                onFocus={this.onFocusHandler}
+            >
+                <button 
+                    onClick={this.onClickHandler}
+                    aria-haspopup="true"
+                    aria-expanded={this.state.isOpen}
+                >
+                    Select an option
+                </button>
+                {this.state.isOpen ? (
+                    <ul>
+                        <li>Option 1</li>
+                        <li>Option 2</li>
+                        <li>Option 3</li>
+                    </ul>
+                ) :null}
+                <button>A</button>
+                <button>B</button>
+            </div>
+        );
+    }
+}
+ReactDOM.render(<BlurExample/>,document.getElementById('root'));
