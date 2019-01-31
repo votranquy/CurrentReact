@@ -1806,14 +1806,15 @@ import './index.css';
 //============================================================================
 //
 //============================================================================
-class TodoList extends React.Component {
+class TodoForm extends React.Component {
+
     handleInput = e => {
-        //e.preventDefault();
         const taskName = this.refs.taskInput.value;
         this.props.addItem(taskName);
         this.refs.taskInput.value ='';
         this.refs.taskInput.focus();
     }
+
     render(){
         return(
             <div className="todoListMain">
@@ -1831,18 +1832,10 @@ class TodoList extends React.Component {
             </div>
         );
     }
+
 }
+
 class TodoItems extends React.Component{
-    // createTasks = itemTodo => {
-    //     const {removeItem} = this.props;
-    //     return(
-    //         <li key={itemTodo.key}>
-    //             {itemTodo.text} 
-    //             <button type="button" onClick={()=> removeItem(itemTodo.key)}>REMOVE</button>
-    //         </li>
-    //     );
-    // }
-    
     render(){
         const {entries} = this.props;
         const listItems = entries.map((listItem,index)=>{
@@ -1856,22 +1849,22 @@ class TodoItems extends React.Component{
         return <ul className="theList">{listItems}</ul>
     }
 }
+
 class App extends React.Component{
+
     constructor(){
         super();
         this.state = {
-            items: [
-                // {key:1, text:"Do housework"},
-                // {key:2, text:"Meet Mr. John"},
-                // {key:3, text:"Pick up daughter"},
-            ],
-        }
+            items: []
+        };
     }
+
     addItem = (taskName) => {
-        const newTask ={
+        const newTask = {
             text:taskName,
             key:Date.now(),
         };
+
         if(taskName !== null && taskName !==''){
             this.setState( state => {
                 return{
@@ -1880,6 +1873,7 @@ class App extends React.Component{
             })
         }
     }
+    
     removeItem = key =>{
         const {items} = this.state;
         this.setState({
@@ -1888,10 +1882,11 @@ class App extends React.Component{
             })
         });
     }
+
     render(){
         return(
             <div>
-                <TodoList 
+                <TodoForm
                     addItem={this.addItem} 
                 />
                 <TodoItems 
