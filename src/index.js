@@ -2101,13 +2101,96 @@ import './index.css';
 //
 //=================================================================
 
-const OtherComponent = React.lazy( ()=> import('./OtherComponent'));
-function MyComponent() {
-    return(
-        <div>
-            <OtherComponent />
-        </div>
-    );
-}
-ReactDOM.render(<MyComponent/>, document.getElementById('root'));
+// const OtherComponent = React.lazy( ()=> import('./OtherComponent'));
+// function MyComponent() {
+//     return(
+//         <div>
+//             <OtherComponent />
+//         </div>
+//     );
+// }
+// ReactDOM.render(<MyComponent/>, document.getElementById('root'));
 //https://reactjs.org/docs/code-splitting.html
+
+//=================================================================
+//
+//=================================================================
+
+// function MyInfo(){
+//     return(
+//         <div>
+//             <h6>Brazil</h6>
+//             <p>How about you?</p>
+//             <ul>
+//                 <li>A</li>
+//                 <li>B</li>
+//             </ul>
+//         </div>
+//     );
+// }
+// ReactDOM.render(
+//     <MyInfo/>,
+//     document.getElementById('root'));
+
+
+//=================================================================
+//
+//=================================================================
+
+// import MyApp from './MyApp.js'
+// ReactDOM.render(
+//     <MyApp />,
+//     document.getElementById('root'));
+
+
+//=================================================================
+//To do App phase 1
+//=================================================================
+
+// import MyApp from './MyApp.js'
+// ReactDOM.render(
+//     <MyApp />,
+//     document.getElementById('root'));
+
+//=================================================================
+//
+//=================================================================
+
+// import React from "react";
+// import React from "react-dom";
+
+// function App(){
+//     const date = new Date();
+//     const hours = date.getHours();
+//     let timeOfDay
+//     const styles = {
+//         color:"#FFBCBB",
+//         //backgroundColor:"#FF2D00"
+//     }
+//     if(hours <12){
+//         timeOfDay = "morning";
+//         styles.color = "red";
+//     }
+//     else if(hours<17){
+//         timeOfDay = "afternoon";
+//         styles.color = "yellow";
+//     }
+//     else {
+//         timeOfDay = "night";
+//         styles.color = "green";
+//     }
+
+//     return(
+//         <h1 style={styles}>Good {timeOfDay}</h1>
+//     );
+// }
+// ReactDOM.render(<App />,document.getElementById('root'));
+
+//=================================================================
+//
+//=================================================================
+
+import MyApp from "./MyApp.js"
+ReactDOM.render(<MyApp />,document.getElementById('root'));
+
+
