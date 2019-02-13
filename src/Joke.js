@@ -9,4 +9,5 @@ function Joke(props){
         </div>
     );
 }
+
 export default Joke;

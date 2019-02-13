@@ -2190,7 +2190,8 @@ import './index.css';
 //
 //=================================================================
 
-import MyApp from "./MyApp.js"
-ReactDOM.render(<MyApp />,document.getElementById('root'));
 
+import App from "./App.js"
+
+ReactDOM.render(<App />,document.getElementById('root'));
 
