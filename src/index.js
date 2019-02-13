@@ -1,6 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import './index.css';
 
 //====================
 // The Tic Tac Toe Game
@@ -2186,12 +2186,136 @@ import './index.css';
 // }
 // ReactDOM.render(<App />,document.getElementById('root'));
 
+
+//=================================================================
+//Todo list
+//=================================================================
+
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import './index.css';
+
+// const todosData = [
+//     {
+//         id:1,
+//         text: "Take out the trash",
+//         completed:true
+//     },
+//     {
+//         id:2,
+//         text: "Go shopping",
+//         completed:false
+//     },
+//     {
+//         id:3,
+//         text: "Mow lawn",
+//         completed:true
+//     },
+//     {
+//         id:4,
+//         text: "Watch Hallay show",
+//         completed:false
+//     },
+// ];
+
+// function TodoItem(props){
+//     return(
+//         <div className="todo-item">
+//             <input type="checkbox" checked={props.item.completed} />
+//             <p> {props.item.text} </p>
+//         </div>
+//     );
+// }
+
+// class App extends React.Component {
+//     constructor(){
+//         super();
+//         this.state= {
+//             todos: todosData,
+//         }
+//     }
+//     render(){
+//         const todoItems = todosData.map(item => <TodoItem key={item.id} item={item}/> )
+//         return(
+//             <div className="todo-list">
+//                 {todoItems}
+//             </div>
+//         );
+//     }
+// }
+
+// ReactDOM.render(<App />,document.getElementById('root'));
+
 //=================================================================
 //
 //=================================================================
 
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import './index.css';
 
-import App from "./App.js"
+// class App extends React.Component{
+//     render(){
+//         return(
+//             <div>
+//                 <h1>Code goes here</h1>
+//             </div>
+//         );
+//     }
+// }
+// ReactDOM.render(<App />,document.getElementById('root'));
 
+//=================================================================
+//
+//=================================================================
+
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import './index.css';
+
+// class App extends React.Component{
+
+//     constructor(){
+//         super();
+//         this.state = {
+//             name: "Sally",
+//             age: 13
+//         };
+//     }
+
+//     render(){
+//         return(
+//             <div>
+//                 <h5> {this.state.name}</h5>
+//                 <h6> {this.state.age} ages old</h6>
+//             </div>
+//         );
+//     }
+// }
+// ReactDOM.render(<App />,document.getElementById('root'));
+
+
+//=================================================================
+//
+//=================================================================
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+function handleClick(){
+    console.log("Clicked")
+}
+function App(){
+    return(
+        <div>
+            <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="A"/>
+            <button onClick={handleClick}>Click</button>
+        </div>
+    );
+}
 ReactDOM.render(<App />,document.getElementById('root'));
+
+//=================================================================
+//
+//=================================================================
 
