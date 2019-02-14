@@ -2299,23 +2299,283 @@
 //
 //=================================================================
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-function handleClick(){
-    console.log("Clicked")
-}
-function App(){
-    return(
-        <div>
-            <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="A"/>
-            <button onClick={handleClick}>Click</button>
-        </div>
-    );
-}
-ReactDOM.render(<App />,document.getElementById('root'));
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import './index.css';
+// import App from "./App.js";
+// // function handleClick(){
+// //     console.log("Clicked")
+// // }
+// // function App(){
+// //     return(
+// //         <div>
+// //             <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="A"/>
+// //             <button onChange={()=> console.log("Changed!")}>Click</button>
+// //         </div>
+// //     );
+// // }
+// ReactDOM.render(<App />,document.getElementById('root'));
 
 //=================================================================
 //
 //=================================================================
 
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import './index.css';
+
+// class App extends React.Component{
+//     constructor(){
+//         super();
+//         this.state ={
+//             count: 0
+//         }
+//         this.handleClick = this.handleClick.bind(this);
+//     }
+//     handleClick(){
+//         this.setState( prevState => {
+//             return{
+//                 count:prevState.count+1
+//             }
+//         });
+//     }
+//     render(){
+//         return(
+//             <div>
+//                 <h1>{this.state.count}</h1>
+//                 <button onClick={this.handleClick} >Click</button>
+//             </div>
+//         );
+//     }
+// }
+// ReactDOM.render(<App />,document.getElementById('root'));
+
+//=================================================================
+//
+//=================================================================
+
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import './index.css';
+
+// const todosData = [
+//     {
+//         id:1,
+//         text: "Take out the trash",
+//         completed:true
+//     },
+//     {
+//         id:2,
+//         text: "Go shopping",
+//         completed:false
+//     },
+//     {
+//         id:3,
+//         text: "Mow lawn",
+//         completed:true
+//     },
+//     {
+//         id:4,
+//         text: "Watch Hallay show",
+//         completed:false
+//     },
+// ];
+
+// function TodoItem(props){
+//     return(
+//         <div className="todo-item">
+//             <input 
+//                 type="checkbox" 
+//                 checked = {props.item.completed} 
+//                 onChange = {(event) => props.handleChange(props.item.id) }
+//             />
+//             <p> {props.item.text} </p>
+//         </div>
+//     );
+// }
+
+// class App extends React.Component{
+
+//     constructor(){
+//         super();
+//         this.state ={
+//             todos: todosData
+//         }
+//         this.handleChange = this.handleChange.bind(this);
+//     }
+
+//     handleChange(id){
+//         this.setState(prevState => {
+//             const updatedTodo = prevState.todos.map(todo => {
+//                 if(todo.id === id){
+//                     todo.completed = !todo.completed
+//                 }
+//                 return todo
+//             })
+//             return{
+//                 todos: updatedTodo
+//             }
+//         })
+//     }
+
+//     render(){
+//         const todoItems = this.state.todos.map(item => <TodoItem key={item.id} item={item} handleChange={this.handleChange}/>)
+//         return(
+//             <div className="todo-list">
+//                 {todoItems}
+//             </div>
+//         );
+//     }
+
+// }
+// ReactDOM.render(<App />,document.getElementById('root'));
+
+//=================================================================
+//
+//=================================================================
+
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import './index.css';
+// //import Conditional from "./Conditional"
+
+// function Conditional(props){
+//     //console.log(props.isLoading)
+//     if(props.isLoading === true){
+//         return(
+//             <h1>Loading...</h1>
+//         );
+//     }else{
+//         return(
+//             <h1>AAAAA Some cool stuff about conditional rendering</h1>
+//         );
+//     }
+
+// }
+
+// class App extends React.Component{
+
+//     constructor(){
+//         super();
+//         this.state ={
+//             isLoading: true
+//         }
+//     }
+//     componentDidMount(){
+//         setTimeout( 
+//             () => {
+//             this.setState({ isLoading: false})
+//             },1000
+//         )
+//     }
+
+//     render(){
+//         return(
+//             <div className="todo-list">
+//                 <Conditional isLoading={this.state.isLoading} />
+//             </div>
+//         );
+//     }
+
+// }
+// ReactDOM.render(<App />,document.getElementById('root'));
+
+// //=================================================================
+// //
+// //=================================================================
+
+
+
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import './index.css';
+
+
+// function Conditional(props){
+//     if(props.isLoading === true){
+//         return(
+//             <h1>Loading...</h1>
+//         );
+//     }else{
+//         return(
+//             <h1>Some cool stuff about conditional rendering</h1>
+//         );
+//     }
+
+// }
+
+// class App extends React.Component{
+
+//     constructor(){
+//         super();
+//         this.state ={
+//             unreadMessages: [
+//                 "Call your mom!",
+//                 "New spam email available."
+//             ]
+//         }
+//     }
+//     render(){
+//         return(
+//             <div className="todo-list">
+//                 <h2> You have {this.state.unreadMessages.length} unread messages!</h2>
+//             </div>
+//         );
+//     }
+
+// }
+// ReactDOM.render(<App />,document.getElementById('root'));
+
+//=================================================================
+//
+//=================================================================
+
+
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+
+
+function Conditional(props){
+    if(props.isLoading === true){
+        return(
+            <h1>Loading...</h1>
+        );
+    }else{
+        return(
+            <h1>Some cool stuff about conditional rendering</h1>
+        );
+    }
+
+}
+
+class App extends React.Component{
+
+    constructor(){
+        super();
+        this.state ={
+            isLoggedIn: false
+        }
+        this.handleClick = this.handleClick.bind(this)
+    }
+    handleClick(){
+        this.setState(prevState => {
+            return{
+                isLoggedIn: !prevState.isLoggedIn
+            }
+        })
+    }
+    render(){
+        let buttonText = this.state.isLoggedIn ? "LOG OUT" : "LOG IN";
+        let displayText = this.state.isLoggedIn ? "Log in" : "Log out";
+        return(
+            <div className="todo-list">
+                <h2>{displayText}</h2>
+                <button onClick={this.handleClick}>{buttonText}</button>
+            </div>
+        );
+    }
+
+}
+ReactDOM.render(<App />,document.getElementById('root'));
