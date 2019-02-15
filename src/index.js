@@ -2382,6 +2382,11 @@
 // ];
 
 // function TodoItem(props){
+//     const completedStyle = {
+//         fontStyle: "italic",
+//         color: "#cdcdcd",
+//         textDecoration: "line-through"
+//     }
 //     return(
 //         <div className="todo-item">
 //             <input 
@@ -2389,7 +2394,7 @@
 //                 checked = {props.item.completed} 
 //                 onChange = {(event) => props.handleChange(props.item.id) }
 //             />
-//             <p> {props.item.text} </p>
+//             <p style={props.item.completed ? completedStyle : null}> {props.item.text} </p>
 //         </div>
 //     );
 // }
@@ -2532,50 +2537,148 @@
 
 
 
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import './index.css';
+
+
+// function Conditional(props){
+//     if(props.isLoading === true){
+//         return(
+//             <h1>Loading...</h1>
+//         );
+//     }else{
+//         return(
+//             <h1>Some cool stuff about conditional rendering</h1>
+//         );
+//     }
+
+// }
+
+// class App extends React.Component{
+
+//     constructor(){
+//         super();
+//         this.state ={
+//             isLoggedIn: false
+//         }
+//         this.handleClick = this.handleClick.bind(this)
+//     }
+//     handleClick(){
+//         this.setState(prevState => {
+//             return{
+//                 isLoggedIn: !prevState.isLoggedIn
+//             }
+//         })
+//     }
+//     render(){
+//         let buttonText = this.state.isLoggedIn ? "LOG OUT" : "LOG IN";
+//         let displayText = this.state.isLoggedIn ? "Log in" : "Log out";
+//         return(
+//             <div className="todo-list">
+//                 <h2>{displayText}</h2>
+//                 <button onClick={this.handleClick}>{buttonText}</button>
+//             </div>
+//         );
+//     }
+
+// }
+// ReactDOM.render(<App />,document.getElementById('root'));
+
+
+// //=================================================================
+// //
+// //=================================================================
+
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import './index.css';
+
+// class App extends React.Component{
+
+//     constructor(){
+//         super();
+//         this.state ={
+//             loading: true,
+//             character: {}
+//         }
+//     }
+//     componentDidMount(){
+//         this.setState({loading: true});
+//         fetch("https://swapi.co/api/people/1")
+//             .then(response => response.json())
+//             .then(data => {
+//                 this.setState({
+//                     loading:false,
+//                     character: data
+//                 })
+//             })     
+//         }
+
+//     render(){
+//         const text = this.state.loading ? "Loading..." :this.state.character.name;
+//         return(
+//             <div>
+//                 {text}
+//             </div>
+//         );
+//     }
+// }
+
+// ReactDOM.render(<App />,document.getElementById('root'));
+
+
+//=================================================================
+//
+//=================================================================
+
+
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
-
-function Conditional(props){
-    if(props.isLoading === true){
-        return(
-            <h1>Loading...</h1>
-        );
-    }else{
-        return(
-            <h1>Some cool stuff about conditional rendering</h1>
-        );
-    }
-
-}
 
 class App extends React.Component{
 
     constructor(){
         super();
         this.state ={
-            isLoggedIn: false
+            firstName: "",
+            lastName: "",
+            isFriendly: true
+
         }
-        this.handleClick = this.handleClick.bind(this)
+        this.handleChange =this.handleChange.bind(this);
+        this.handleClick =this.handleClick.bind(this);
     }
+
+    handleChange(event){
+        const {name,value} = event.target
+        this.setState({
+            [name]: value
+        })
+    }
+
     handleClick(){
         this.setState(prevState => {
             return{
-                isLoggedIn: !prevState.isLoggedIn
+                isFriendly: !prevState.isFriendly
             }
-        })
+        });
     }
+    
     render(){
-        let buttonText = this.state.isLoggedIn ? "LOG OUT" : "LOG IN";
-        let displayText = this.state.isLoggedIn ? "Log in" : "Log out";
         return(
-            <div className="todo-list">
-                <h2>{displayText}</h2>
-                <button onClick={this.handleClick}>{buttonText}</button>
-            </div>
+            <form>
+                <input type="text" name="firstName" onChange={this.handleChange} />
+                <h1>{this.state.firstName}</h1>
+                <input type="text" name="lastName" onChange={this.handleChange} />
+                <h1>{this.state.lastName}</h1>
+                <textarea value={"Some default value"}></textarea>
+                <input type="checkbox" checked={this.state.isFriendly} onChange={this.handleClick} />
+            </form>
         );
     }
-
 }
+
 ReactDOM.render(<App />,document.getElementById('root'));

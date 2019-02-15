@@ -63,6 +63,11 @@
     height:30px;
     background-color:white;
   }
+  textarea {
+    width: 30%;
+    height:70px;
+    background-color:white;
+  }
   .warning {
     background-color: red;
     text-align: center;
