@@ -2634,6 +2634,104 @@
 
 
 
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import './index.css';
+
+// class App extends React.Component{
+
+//     constructor(){
+//         super();
+//         this.state ={
+//             firstName: "",
+//             lastName: "",
+//             isFriendly: true,
+//             gender: "male",
+//             favColor:"blue"
+
+//         }
+//         this.handleChange =this.handleChange.bind(this);
+//         //this.handleClick =this.handleClick.bind(this);
+//     }
+
+//     handleChange(event){
+//         const {name,value,type,checked} = event.target;
+//         type === "checkbox" ? this.setState({[name]:checked}) : this.setState({[name]:value})
+//     }
+
+//     // handleClick(){
+//     //     this.setState(prevState => {
+//     //         return{
+//     //             isFriendly: !prevState.isFriendly
+//     //         }
+//     //     });
+//     // }
+    
+//     render(){
+//         return(
+//             <form>
+//                 <input 
+//                     type="text" 
+//                     name="firstName" 
+//                     onChange={this.handleChange} />
+//                 <h1>{this.state.firstName}</h1>
+//                 <input 
+//                     type="text" 
+//                     name="lastName" 
+//                     onChange={this.handleChange} />
+//                 <h1>{this.state.lastName}</h1>
+//                 <textarea value={"Some default value"}></textarea>
+//                 <br/>
+//                 <input 
+//                     type="checkbox" 
+//                     name="isFriendly" 
+//                     checked={this.state.isFriendly} 
+//                     onChange={this.handleChange} />
+//                 <br/>
+//                 <label>
+//                     <input 
+//                         type="radio" 
+//                         name="gender" value="male" 
+//                         checked={this.state.gender === "male"}
+//                         onChange={this.handleChange} />Male
+//                 </label>
+//                 <br/>
+//                 <label>   
+//                     <input 
+//                         type="radio" 
+//                         name="gender" 
+//                         value="female" 
+//                         checked={this.state.gender === "female"}
+//                         onChange={this.handleChange} />Female
+//                 </label>
+//                 <h6>You are a {this.state.gender}</h6>
+//                 <label>Favarite Color</label>
+//                 <select 
+//                     value={this.state.favColor} 
+//                     onChange={this.handleChange} 
+//                     name="favColor"> 
+//                     <option value="blue">Blue</option>
+//                     <option value="green">Green</option>
+//                     <option value="red">Red</option>
+//                     <option value="orange">Orange</option>
+//                     <option value="yellow">Yellow</option>
+//                 </select>
+//                 <h6>Your fivarite color is {this.state.favColor}</h6>
+//             </form>
+//         );
+//     }
+// }
+// ReactDOM.render(<App />,document.getElementById('root'));
+
+
+
+
+//=================================================================
+//
+//=================================================================
+
+
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -2645,40 +2743,71 @@ class App extends React.Component{
         this.state ={
             firstName: "",
             lastName: "",
-            isFriendly: true
-
+            age: "",
+            gender: "",
+            destination: "",
+            dietaryRestrictions: []
         }
         this.handleChange =this.handleChange.bind(this);
-        this.handleClick =this.handleClick.bind(this);
     }
 
     handleChange(event){
-        const {name,value} = event.target
-        this.setState({
-            [name]: value
-        })
+        const {name,value,type,checked} = event.target;
+        type === "checkbox" ? this.setState({[name]:checked}) : this.setState({[name]:value})
     }
 
-    handleClick(){
-        this.setState(prevState => {
-            return{
-                isFriendly: !prevState.isFriendly
-            }
-        });
-    }
     
     render(){
         return(
             <form>
-                <input type="text" name="firstName" onChange={this.handleChange} />
-                <h1>{this.state.firstName}</h1>
-                <input type="text" name="lastName" onChange={this.handleChange} />
-                <h1>{this.state.lastName}</h1>
-                <textarea value={"Some default value"}></textarea>
-                <input type="checkbox" checked={this.state.isFriendly} onChange={this.handleClick} />
+
+                <input 
+                    type="text"
+                    value={this.state.firstName}
+                    name="firstName"
+                    placeholder="First Name"
+                    onChange={this.handleChange} 
+                />
+                <br/>
+                <input 
+                    type="text"
+                    value={this.state.lastName}
+                    name="lastName"
+                    placeholder="Last Name"
+                    onChange={this.handleChange} 
+                />
+                <br/>
+                <input 
+                    type="text"
+                    value={this.state.age}
+                    name="age"
+                    placeholder="Age" 
+                    onChange={this.handleChange} 
+                />
+                <br/>
+                <label>
+                    <input 
+                        type="radio"
+                        name="gender"
+                        value="male"
+                        checked={this.state.gender === "male"}
+                        onChange={this.handleChange}
+                    />Male
+                </label>   
+                <br/>
+                <label>
+                    <input 
+                        type="radio"
+                        name="gender"
+                        value="female"
+                        checked={this.state.gender === "female"}
+                        onChange={this.handleChange}
+                    />Female
+                </label>
+                <br/>
+                <button>Submit</button>
             </form>
         );
     }
 }
-
 ReactDOM.render(<App />,document.getElementById('root'));
