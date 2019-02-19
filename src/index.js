@@ -2722,16 +2722,9 @@
 //     }
 // }
 // ReactDOM.render(<App />,document.getElementById('root'));
-
-
-
-
 //=================================================================
 //
 //=================================================================
-
-
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -2746,17 +2739,31 @@ class App extends React.Component{
             age: "",
             gender: "",
             destination: "",
-            dietaryRestrictions: []
+            dietaryRestrictions: {
+                isVegan: false,
+                isKosher: false,
+                isLactoseFree: false
+            }
         }
         this.handleChange =this.handleChange.bind(this);
     }
 
     handleChange(event){
-        const {name,value,type,checked} = event.target;
-        type === "checkbox" ? this.setState({[name]:checked}) : this.setState({[name]:value})
+        const {name, value, type, checked} = event.target;
+        type === "checkbox" ? 
+            this.setState(prevState => {
+                return{
+                    dietaryRestrictions:{
+                        ...prevState.dietaryRestrictions,
+                        [name]: checked
+                } 
+                }})
+        : 
+            this.setState({
+                [name]: value
+            })
     }
 
-    
     render(){
         return(
             <form>
@@ -2769,6 +2776,7 @@ class App extends React.Component{
                     onChange={this.handleChange} 
                 />
                 <br/>
+
                 <input 
                     type="text"
                     value={this.state.lastName}
@@ -2777,6 +2785,7 @@ class App extends React.Component{
                     onChange={this.handleChange} 
                 />
                 <br/>
+
                 <input 
                     type="text"
                     value={this.state.age}
@@ -2785,6 +2794,7 @@ class App extends React.Component{
                     onChange={this.handleChange} 
                 />
                 <br/>
+
                 <label>
                     <input 
                         type="radio"
@@ -2795,6 +2805,7 @@ class App extends React.Component{
                     />Male
                 </label>   
                 <br/>
+
                 <label>
                     <input 
                         type="radio"
@@ -2805,9 +2816,67 @@ class App extends React.Component{
                     />Female
                 </label>
                 <br/>
+
+                <select value={this.state.destination} name="destination" onChange={this.handleChange}>
+                    <option value="Laos">Laos</option>
+                    <option value="Cambodia">Cambodia</option>
+                    <option value="Myanmar">Myanmar</option>
+                    <option value="VietNam">VietNam</option>
+                </select>
+                <br/>
+
+                <label>
+                    <input 
+                        type="checkbox"
+                        name="isVegan"
+                        onChange={this.handleChange}
+                        checked={this.state.dietaryRestrictions.isVegan}
+                    />Vegan
+                </label>
+                <br/>
+
+                <label>
+                    <input 
+                        type="checkbox"
+                        name="isKosher"
+                        onChange={this.handleChange}
+                        checked={this.state.dietaryRestrictions.isKosher}
+                    />Kosher
+                </label>
+                <br/>
+
+                <label>
+                    <input 
+                        type="checkbox"
+                        name="isLactoseFree"
+                        onChange={this.handleChange}
+                        checked={this.state.dietaryRestrictions.isLactoseFree}
+                    />LactoseFree
+                </label>
+                <br/>
+
                 <button>Submit</button>
+                <p> Result:</p>
+                <p> Your name: {this.state.firstName} {this.state.lastName}</p>
+                <p> Your age: {this.state.age} years old</p>
+                <p> Your gender: {this.state.gender} </p>
+                <p> Your destination: {this.state.destination} </p>
+                <p> Your dietary restrictation: </p>
+                <p> Vegan: {this.state.dietaryRestrictions.isVegan ? "Yes" : "No"} </p>
+                <p> Kosher: {this.state.dietaryRestrictions.isKosher ? "Yes" : "No"} </p>
+                <p> Lactose Free: {this.state.dietaryRestrictions.isLactoseFree ? "Yes" : "No"} </p>
+                
+                
             </form>
         );
     }
 }
 ReactDOM.render(<App />,document.getElementById('root'));
+
+//Chọn
+//Truong dai hoc
+//Duong di
+//an uong gi
+//di choi o dau
+//mat do gi
+//
