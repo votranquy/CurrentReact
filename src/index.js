@@ -2725,153 +2725,153 @@
 //=================================================================
 //
 //=================================================================
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import './index.css';
 
-class App extends React.Component{
+// class App extends React.Component{
 
-    constructor(){
-        super();
-        this.state ={
-            firstName: "",
-            lastName: "",
-            age: "",
-            gender: "",
-            destination: "",
-            dietaryRestrictions: {
-                isVegan: false,
-                isKosher: false,
-                isLactoseFree: false
-            }
-        }
-        this.handleChange =this.handleChange.bind(this);
-    }
+//     constructor(){
+//         super();
+//         this.state ={
+//             firstName: "",
+//             lastName: "",
+//             age: "",
+//             gender: "",
+//             destination: "",
+//             dietaryRestrictions: {
+//                 isVegan: false,
+//                 isKosher: false,
+//                 isLactoseFree: false
+//             }
+//         }
+//         this.handleChange =this.handleChange.bind(this);
+//     }
 
-    handleChange(event){
-        const {name, value, type, checked} = event.target;
-        type === "checkbox" ? 
-            this.setState(prevState => {
-                return{
-                    dietaryRestrictions:{
-                        ...prevState.dietaryRestrictions,
-                        [name]: checked
-                } 
-                }})
-        : 
-            this.setState({
-                [name]: value
-            })
-    }
+//     handleChange(event){
+//         const {name, value, type, checked} = event.target;
+//         type === "checkbox" ? 
+//             this.setState(prevState => {
+//                 return{
+//                     dietaryRestrictions:{
+//                         ...prevState.dietaryRestrictions,
+//                         [name]: checked
+//                 } 
+//                 }})
+//         : 
+//             this.setState({
+//                 [name]: value
+//             })
+//     }
 
-    render(){
-        return(
-            <form>
+//     render(){
+//         return(
+//             <form>
 
-                <input 
-                    type="text"
-                    value={this.state.firstName}
-                    name="firstName"
-                    placeholder="First Name"
-                    onChange={this.handleChange} 
-                />
-                <br/>
+//                 <input 
+//                     type="text"
+//                     value={this.state.firstName}
+//                     name="firstName"
+//                     placeholder="First Name"
+//                     onChange={this.handleChange} 
+//                 />
+//                 <br/>
 
-                <input 
-                    type="text"
-                    value={this.state.lastName}
-                    name="lastName"
-                    placeholder="Last Name"
-                    onChange={this.handleChange} 
-                />
-                <br/>
+//                 <input 
+//                     type="text"
+//                     value={this.state.lastName}
+//                     name="lastName"
+//                     placeholder="Last Name"
+//                     onChange={this.handleChange} 
+//                 />
+//                 <br/>
 
-                <input 
-                    type="text"
-                    value={this.state.age}
-                    name="age"
-                    placeholder="Age" 
-                    onChange={this.handleChange} 
-                />
-                <br/>
+//                 <input 
+//                     type="text"
+//                     value={this.state.age}
+//                     name="age"
+//                     placeholder="Age" 
+//                     onChange={this.handleChange} 
+//                 />
+//                 <br/>
 
-                <label>
-                    <input 
-                        type="radio"
-                        name="gender"
-                        value="male"
-                        checked={this.state.gender === "male"}
-                        onChange={this.handleChange}
-                    />Male
-                </label>   
-                <br/>
+//                 <label>
+//                     <input 
+//                         type="radio"
+//                         name="gender"
+//                         value="male"
+//                         checked={this.state.gender === "male"}
+//                         onChange={this.handleChange}
+//                     />Male
+//                 </label>   
+//                 <br/>
 
-                <label>
-                    <input 
-                        type="radio"
-                        name="gender"
-                        value="female"
-                        checked={this.state.gender === "female"}
-                        onChange={this.handleChange}
-                    />Female
-                </label>
-                <br/>
+//                 <label>
+//                     <input 
+//                         type="radio"
+//                         name="gender"
+//                         value="female"
+//                         checked={this.state.gender === "female"}
+//                         onChange={this.handleChange}
+//                     />Female
+//                 </label>
+//                 <br/>
 
-                <select value={this.state.destination} name="destination" onChange={this.handleChange}>
-                    <option value="Laos">Laos</option>
-                    <option value="Cambodia">Cambodia</option>
-                    <option value="Myanmar">Myanmar</option>
-                    <option value="VietNam">VietNam</option>
-                </select>
-                <br/>
+//                 <select value={this.state.destination} name="destination" onChange={this.handleChange}>
+//                     <option value="Laos">Laos</option>
+//                     <option value="Cambodia">Cambodia</option>
+//                     <option value="Myanmar">Myanmar</option>
+//                     <option value="VietNam">VietNam</option>
+//                 </select>
+//                 <br/>
 
-                <label>
-                    <input 
-                        type="checkbox"
-                        name="isVegan"
-                        onChange={this.handleChange}
-                        checked={this.state.dietaryRestrictions.isVegan}
-                    />Vegan
-                </label>
-                <br/>
+//                 <label>
+//                     <input 
+//                         type="checkbox"
+//                         name="isVegan"
+//                         onChange={this.handleChange}
+//                         checked={this.state.dietaryRestrictions.isVegan}
+//                     />Vegan
+//                 </label>
+//                 <br/>
 
-                <label>
-                    <input 
-                        type="checkbox"
-                        name="isKosher"
-                        onChange={this.handleChange}
-                        checked={this.state.dietaryRestrictions.isKosher}
-                    />Kosher
-                </label>
-                <br/>
+//                 <label>
+//                     <input 
+//                         type="checkbox"
+//                         name="isKosher"
+//                         onChange={this.handleChange}
+//                         checked={this.state.dietaryRestrictions.isKosher}
+//                     />Kosher
+//                 </label>
+//                 <br/>
 
-                <label>
-                    <input 
-                        type="checkbox"
-                        name="isLactoseFree"
-                        onChange={this.handleChange}
-                        checked={this.state.dietaryRestrictions.isLactoseFree}
-                    />LactoseFree
-                </label>
-                <br/>
+//                 <label>
+//                     <input 
+//                         type="checkbox"
+//                         name="isLactoseFree"
+//                         onChange={this.handleChange}
+//                         checked={this.state.dietaryRestrictions.isLactoseFree}
+//                     />LactoseFree
+//                 </label>
+//                 <br/>
 
-                <button>Submit</button>
-                <p> Result:</p>
-                <p> Your name: {this.state.firstName} {this.state.lastName}</p>
-                <p> Your age: {this.state.age} years old</p>
-                <p> Your gender: {this.state.gender} </p>
-                <p> Your destination: {this.state.destination} </p>
-                <p> Your dietary restrictation: </p>
-                <p> Vegan: {this.state.dietaryRestrictions.isVegan ? "Yes" : "No"} </p>
-                <p> Kosher: {this.state.dietaryRestrictions.isKosher ? "Yes" : "No"} </p>
-                <p> Lactose Free: {this.state.dietaryRestrictions.isLactoseFree ? "Yes" : "No"} </p>
+//                 <button>Submit</button>
+//                 <p> RESULT:</p>
+//                 <p> Your name: {this.state.firstName} {this.state.lastName}</p>
+//                 <p> Your age: {this.state.age} years old</p>
+//                 <p> Your gender: {this.state.gender} </p>
+//                 <p> Your destination: {this.state.destination} </p>
+//                 <p> Your dietary restrictation </p>
+//                 <p> +Vegan: {this.state.dietaryRestrictions.isVegan ? "Yes" : "No"} </p>
+//                 <p> +Kosher: {this.state.dietaryRestrictions.isKosher ? "Yes" : "No"} </p>
+//                 <p> +Lactose Free: {this.state.dietaryRestrictions.isLactoseFree ? "Yes" : "No"} </p>
                 
                 
-            </form>
-        );
-    }
-}
-ReactDOM.render(<App />,document.getElementById('root'));
+//             </form>
+//         );
+//     }
+// }
+// ReactDOM.render(<App />,document.getElementById('root'));
 
 //Chọn
 //Truong dai hoc
@@ -2880,3 +2880,153 @@ ReactDOM.render(<App />,document.getElementById('root'));
 //di choi o dau
 //mat do gi
 //
+
+//=================================================================
+//
+//=================================================================
+
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import './index.css';
+
+// function Header(){
+//     return(
+//        <header>
+//            <img 
+//                 src="http://www.pngall.com/wp-content/upload/2016/05/Trollface.png"
+//                 alt="Problem"
+//             /> 
+//             <p>Meme Generator</p>
+//        </header> 
+//     );
+// }
+
+// class MemeGenerator extends React.Component{
+    
+//     constructor(){
+//         super();
+//         this.state ={
+//             topText: "",
+//             bottomText: "",
+//             randomImg: "http://i.imgflip.com/1bij.jpg",
+//             allMemeImgs: []
+//         };
+//         this.handleChange=this.handleChange.bind(this);
+//     }
+
+//     // componentDidMount(){
+//     //     fetch("htpps://api.imgflip.com/get_memes")
+//     //         .then(response => response.json())
+//     //         .then(response => {
+//     //             const {memes} = response.data
+//     //             console.log(memes[0])
+//     //             this.setState({allMemeImgs: memes})
+//     //         })
+//     // }
+
+//     handleChange(event){
+//         const {name,value} =event.target;
+//         this.setState({ [name]: value})
+//     }
+
+//     handleSubmit(event){
+//         event.preventDefault();
+//         const randNum = Math.floor(Math.random() * this.state.allMemeImgs.length);
+//         const randMemeImg = this.state.allMemeImgs[randNum].url;
+//         this.setState({randomImg : randMemeImg})
+//     }
+
+//     render(){
+//         return(
+//             <div>
+//                 <h6>MENERATOR</h6>
+//                 <form className="meme-form">
+//                     <input 
+//                         type="text"
+//                         name="topText"
+//                         placeholder="Top Text"
+//                         value={this.state.topText}
+//                         onChange={this.handleChange}
+//                     />
+//                     <input 
+//                         type="text"
+//                         name="bottomText"
+//                         placeholder="Bottom Text"
+//                         value={this.state.bottomText}
+//                         onChange={this.handleChange}
+//                     />
+
+//                     <button>Gen</button>
+//                 </form>
+//                 <div className="meme">
+//                     <img src={this.state.randomImg} alt="a"/>
+//                     <h2 className="top">{this.state.topText}</h2>
+//                     <h2 className="bottom">{this.state.bottomText}</h2>
+//                 </div>
+//             </div>
+//         );
+//     }
+// }
+
+// function App(){
+//     return(
+//         <div>
+//             <h6>Hello guest</h6>
+//             <Header />
+//             <MemeGenerator/>
+//         </div>
+//     );
+// }
+
+// ReactDOM.render(<App />,document.getElementById('root'));
+
+
+//=================================================================
+//
+//=================================================================
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+
+
+class App extends React.Component{
+    
+    state = {
+        firstName: ""
+    }
+
+    constructor(){
+        super();
+        this.state = {
+            firstName: "",
+        }
+        this.handleChange =this.handleChange.bind(this);
+    }
+
+    handleChange(event){
+        const {name, value} = event.target;
+        this.setState({
+            [name]: value,
+        })
+    }
+
+    render(){
+        return(
+            <main>
+                <form>
+                    <input 
+                        type="text"
+                        name="firstName"
+                        value={this.state.firstName}
+                        onChange={this.handleChange}
+                        placeholder="first Name"
+                    />
+                </form>
+                <h1>{this.state.firstName}</h1>
+            </main>
+        );
+    }
+}
+
+ReactDOM.render(<App />,document.getElementById('root'));
