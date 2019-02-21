@@ -2985,48 +2985,62 @@
 //
 //=================================================================
 
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import './index.css';
+
+
+// class App extends React.Component{
+    
+//     state = {
+//         firstName: ""
+//     }
+
+//     constructor(){
+//         super();
+//         this.state = {
+//             firstName: "",
+//         }
+//         this.handleChange =this.handleChange.bind(this);
+//     }
+
+//     handleChange(event){
+//         const {name, value} = event.target;
+//         this.setState({
+//             [name]: value,
+//         })
+//     }
+
+//     render(){
+//         return(
+//             <main>
+//                 <form>
+//                     <input 
+//                         type="text"
+//                         name="firstName"
+//                         value={this.state.firstName}
+//                         onChange={this.handleChange}
+//                         placeholder="first Name"
+//                     />
+//                 </form>
+//                 <h1>{this.state.firstName}</h1>
+//             </main>
+//         );
+//     }
+// }
+
+// ReactDOM.render(<App />,document.getElementById('root'));
+
+
+//=================================================================
+//
+//=================================================================
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import App from './App.js'
 
 
-class App extends React.Component{
-    
-    state = {
-        firstName: ""
-    }
-
-    constructor(){
-        super();
-        this.state = {
-            firstName: "",
-        }
-        this.handleChange =this.handleChange.bind(this);
-    }
-
-    handleChange(event){
-        const {name, value} = event.target;
-        this.setState({
-            [name]: value,
-        })
-    }
-
-    render(){
-        return(
-            <main>
-                <form>
-                    <input 
-                        type="text"
-                        name="firstName"
-                        value={this.state.firstName}
-                        onChange={this.handleChange}
-                        placeholder="first Name"
-                    />
-                </form>
-                <h1>{this.state.firstName}</h1>
-            </main>
-        );
-    }
-}
 
 ReactDOM.render(<App />,document.getElementById('root'));
