@@ -1,11 +1,17 @@
 import React from "react";
 import AutoCompleteText from './AutoCompleteText';
-
+import countries from './countries.js'
 class App extends React.Component{
     render(){
         return(
             <div className="App">
-                <AutoCompleteText />
+                <div className="App-Component">
+                    <div className="App-Component">
+                        <div className="App">
+                            <AutoCompleteText items={countries}/>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
